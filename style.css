@@ -7985,16 +7985,19 @@ WP-Bootstrap - Gallery
   max-width: 500px;
   border: 1px solid #777777;
   border-radius: 5px;
-}
-.embed-card .media {
   padding: 12px;
+  margin: 10px 0;
   font-size: 13px;
 }
-.embed-card .media a {
+.embed-card a {
   color: #333333;
   text-decoration: none;
 }
-.embed-card .media .media-heading {
+.embed-card .embed-card-left {
+  float: left;
+  margin-right: 10px;
+}
+.embed-card .embed-card-heading {
   font-size: 17px;
   font-weight: bold;
   margin: 0 0 2px;
@@ -8002,13 +8005,11 @@ WP-Bootstrap - Gallery
   max-height: 47px;
   overflow: hidden;
 }
-.embed-card .media .media-body {
+.embed-card .embed-card-body {
   line-height: 1.5;
   font-size: 12px;
-  max-height: 72px;
-  overflow: hidden;
 }
-.embed-card .media .media-image {
+.embed-card .embed-card-object {
   width: 100px;
   height: auto;
 }
