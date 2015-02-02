@@ -6,8 +6,19 @@ WP-Bootstrap - Main Styles
 
 
 
+@import "../../bower_components/bootstrap/less/variables.less";  //bootstrap variables
+//@import "./bootstrap-variables.less"; // override bootstrap variables
+@import "./vars.less";
 
-@import "wp.less";
+.link-color {
+  color:@link-color;
+}
+
+@import "../../bower_components/bootstrap/less/bootstrap.less";  //bootstrap
+@import "../../bower_components/bootstrap/less/theme.less";      //bootstrap theme
+@icon-font-path: "../../bower_components/bootstrap/fonts/";
+
+
 @import "layout.less";
 @import "navbar.less";
 @import "posts.less";
@@ -20,9 +31,9 @@ WP-Bootstrap - Main Styles
 @import "sidebar.less";
 
 
-@import "../../bower_components/bootstrap/less/bootstrap.less";  //bootstrap
-@import "../../bower_components/bootstrap/less/theme.less";      //bootstrap theme
-@import "../../bower_components/bootstrap/less/mixins.less";      //bootstrap theme
+
 
 @import "embed-card.less";
+
+
 
