@@ -113,15 +113,15 @@ msgstr "No"
 
 #: comments.php:21
 msgid "Responses"
-msgstr "Responses"
+msgstr "返信"
 
 #: comments.php:21
 msgid "One"
-msgstr "One"
+msgstr "1件"
 
 #: comments.php:21
 msgid "Response"
-msgstr "Response"
+msgstr "返信"
 
 #: comments.php:21
 msgid "to"
@@ -217,7 +217,7 @@ msgstr "Edit"
 
 #: functions.php:151
 msgid "Your comment is awaiting moderation."
-msgstr "Your comment is awaiting moderation."
+msgstr "コメントを確認しています。承認されるまでしばらく待ち下さい。"
 
 #: functions.php:193
 msgid "Search for:"

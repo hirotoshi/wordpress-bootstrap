@@ -14,17 +14,19 @@ module.exports = function(grunt) {
     less: {
       dist: {
         files: {
-          'library/dist/css/styles.css': [
-            'library/less/styles.less'
-          ]
+        //  'library/dist/css/styles.css': [
+        //    'library/less/styles.less'
+        //  ]
+            'style.css' : 'style.less'
         },
+        
         options: {
-          compress: true,
+    //      compress: true,
           // LESS source map
           // To enable, set sourceMap to true and update sourceMapRootpath based on your install
-          sourceMap: true,
-          sourceMapFilename: 'library/dist/css/styles.css.map',
-          sourceMapRootpath: '/wp-content/themes/wordpress-bootstrap/' // If you name your theme something different you may need to change this
+    //      sourceMap: true,
+    //      sourceMapFilename: 'style.css.map',
+    //      sourceMapRootpath: '/wp-content/themes/wordpress-bootstrap/' // If you name your theme something different you may need to change this
         }
       }
     },
@@ -69,7 +71,7 @@ module.exports = function(grunt) {
           'bower_components/font-awesome/less/*.less',
           'library/less/*.less'
         ],
-        tasks: ['less', 'version']
+        tasks: ['less']
       },
       js: {
         files: [

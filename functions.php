@@ -31,6 +31,7 @@ if( !function_exists( "wp_bootstrap_rss_version" ) ) {
 add_filter( 'the_generator', 'wp_bootstrap_rss_version' );
 
 // Remove the […] in a Read More link
+/*
 if( !function_exists( "wp_bootstrap_excerpt_more" ) ) {  
   function wp_bootstrap_excerpt_more( $more ) {
     global $post;
@@ -38,12 +39,15 @@ if( !function_exists( "wp_bootstrap_excerpt_more" ) ) {
   }
 }
 add_filter('excerpt_more', 'wp_bootstrap_excerpt_more');
+ */
 
 // Add WP 3+ Functions & Theme Support
 if( !function_exists( "wp_bootstrap_theme_support" ) ) {  
   function wp_bootstrap_theme_support() {
     add_theme_support( 'post-thumbnails' );      // wp thumbnails (sizes handled in functions.php)
-    set_post_thumbnail_size( 125, 125, true );   // default thumb size
+    set_post_thumbnail_size( 825, 510, true );
+    add_image_size('thumb100',100,100,true);
+    add_image_size('thumb150',150,150,true);
     add_theme_support( 'custom-background' );  // wp custom background
     add_theme_support( 'automatic-feed-links' ); // rss
 
@@ -548,12 +552,15 @@ add_filter('nav_menu_css_class', 'wp_bootstrap_add_active_class', 10, 2 );
 if( !function_exists("wp_bootstrap_theme_styles") ) {  
     function wp_bootstrap_theme_styles() { 
         // This is the compiled css file from LESS - this means you compile the LESS file locally and put it in the appropriate directory if you want to make any changes to the master bootstrap.css.
-        wp_register_style( 'wpbs', get_template_directory_uri() . '/library/dist/css/styles.f6413c85.min.css', array(), '1.0', 'all' );
-        wp_enqueue_style( 'wpbs' );
+        //wp_register_style( 'wpbs', get_template_directory_uri() . '/library/dist/css/styles.7b6e3480.min.css', array(), '1.0', 'all' );
+        //wp_enqueue_style( 'wpbs' );
 
         // For child themes
         wp_register_style( 'wpbs-style', get_stylesheet_directory_uri() . '/style.css', array(), '1.0', 'all' );
         wp_enqueue_style( 'wpbs-style' );
+
+        wp_register_style( 'font-awesome', get_stylesheet_directory_uri() . '/bower_components/font-awesome/css/font-awesome.css', array(), '1.0', 'all' );
+        wp_enqueue_style( 'font-awesome' );
     }
 }
 add_action( 'wp_enqueue_scripts', 'wp_bootstrap_theme_styles' );

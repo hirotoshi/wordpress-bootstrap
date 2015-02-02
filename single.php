@@ -9,12 +9,20 @@
 					<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 						
 						<header>
-						
-							<?php the_post_thumbnail( 'wpbs-featured' ); ?>
-							
 							<div class="page-header"><h1 class="single-title" itemprop="headline"><?php the_title(); ?></h1></div>
 							
-							<p class="meta"><?php _e("Posted", "wpbootstrap"); ?> <time datetime="<?php echo the_time('Y-m-j'); ?>" pubdate><?php echo get_the_date('F jS, Y', '','', FALSE); ?></time> <?php _e("by", "wpbootstrap"); ?> <?php the_author_posts_link(); ?> <span class="amp">&</span> <?php _e("filed under", "wpbootstrap"); ?> <?php the_category(', '); ?>.</p>
+							<p class="meta">
+							<span class="kdate"><i class="fa fa-calendar"></i>&nbsp;
+								<time class="entry-date" datetime="<?php the_time('c') ;?>">
+									<?php the_time('Y/m/d') ;?>
+								</time>
+								&nbsp;
+								<?php if ($mtime = get_the_time('Y/m/d')) : ?>
+								<i class="fa fa-repeat"></i>&nbsp;
+								<?php echo $mtime; ?>
+								<?php endif ?>
+							</span> 
+							</p>
 						
 						</header> <!-- end article header -->
 					
