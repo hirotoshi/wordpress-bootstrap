@@ -7,32 +7,84 @@ WP-Bootstrap - Post Styles
 
 
 
-
+//記事
 .post {
   margin-bottom: 18px;
   padding: 0 0 9px;
-  margin:0 -10px;
+  @media (max-width: @screen-sm-min) {
+    margin:0 -10px;
+  }
 
-  .page-header {
+  .post-inner {
     padding:0 10px;
   }
 
+  //記事タイトル
+  .page-header {
+    .single-title {
+      font-size: 26px;
+      font-weight: bold;
+      line-height: 30px;
+      color: #333;
+      margin-bottom: 10px;
+      a:hover {
+        text-decoration: underline;
+      }
+      a {
+        color: #333;
+        text-decoration: none;
+      }
+
+    }
+  }
+
+  //記事のメタデータ
   .meta{
     font-style: italic;
     color: #808080;
-    padding:0 10px;
   }
 
+  //記事の本文
   .post_content {
-    padding:0 10px;
+
+    font-size: 17px;
+    line-height: 27px;
+    margin-bottom: 20px;
+
+    //本文中の画像
+    img{
+      height: auto;
+      max-width: 100%;
+    }
+
+    //本文中の見出し
+    h2 {
+      font-size: 23px;
+      font-weight: bold;
+      line-height: 30px;
+    }
+    h3 {
+      font-size: 21px;
+      font-weight: bold;
+      line-height: 30px;
+    }
+    h4 {
+
+    }
   }
 
+  //記事のフッタ
   footer { 
     border-top: none;
+    //border-top: 1px solid @gray-lighter;
+    //border-bottom: 1px solid @gray-lighter;
     margin-top: 0;
     padding-top: 0;
     position: relative;
     min-height: 20px;
+    h4 { 
+      //border-bottom: 1px solid @gray-lighter;
+    }
   }
 
 
@@ -51,10 +103,6 @@ div[id*='attachment_']{
 	margin-bottom: 1em;
 }
 
-.post img{
-	height: auto;
-	max-width: 100%;
-}
 
 img.alignleft{
 	margin-right: 10px;

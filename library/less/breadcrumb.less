@@ -1,0 +1,22 @@
+
+.breadcrumb {
+  padding:5px;
+  margin-bottom:5px;
+  background-color: transparent;
+  font-size:14px;
+  //background: lighten( @search-form-bg, 10%);
+  a,a:link {
+    color: @gray-light;
+    //color: @gray-dark;
+  }
+  .active {
+    color: @gray-light;
+    //color: @gray;
+  }
+  > li + li:before {
+    padding: 0 5px;
+    color: @gray;
+    content: ">";
+  }
+}
+

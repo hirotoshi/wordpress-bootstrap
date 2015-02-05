@@ -5,20 +5,17 @@ WP-Bootstrap - Main Styles
 */
 
 
-
+//変数
 @import "../../bower_components/bootstrap/less/variables.less";  //bootstrap variables
-//@import "./bootstrap-variables.less"; // override bootstrap variables
 @import "./vars.less";
 
-.link-color {
-  color:@link-color;
-}
 
+//bowerコンポーネント
 @import "../../bower_components/bootstrap/less/bootstrap.less";  //bootstrap
 @import "../../bower_components/bootstrap/less/theme.less";      //bootstrap theme
 @icon-font-path: "../../bower_components/bootstrap/fonts/";
 
-
+//wpbライブラリ
 @import "layout.less";
 @import "navbar.less";
 @import "posts.less";
@@ -30,10 +27,8 @@ WP-Bootstrap - Main Styles
 @import "media.less";
 @import "sidebar.less";
 
-
-
-
 @import "embed-card.less";
+@import "breadcrumb.less";
 
 
 

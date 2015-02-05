@@ -671,10 +671,13 @@ function wp_bootstrap_page_navi($before = '', $after = '') {
   }
     
   echo $before.'<ul class="pagination">'."";
+
+  /*
   if ($paged > 1) {
     $first_page_text = "&laquo";
     echo '<li class="prev"><a href="'.get_pagenum_link().'" title="' . __('First','wpbootstrap') . '">'.$first_page_text.'</a></li>';
   }
+   */
     
   $prevposts = get_previous_posts_link( __('&larr; Previous','wpbootstrap') );
   if($prevposts) { echo '<li>' . $prevposts  . '</li>'; }
@@ -690,10 +693,14 @@ function wp_bootstrap_page_navi($before = '', $after = '') {
   echo '<li class="">';
   next_posts_link( __('Next &rarr;','wpbootstrap') );
   echo '</li>';
+
+  /*
   if ($end_page < $max_page) {
     $last_page_text = "&raquo;";
     echo '<li class="next"><a href="'.get_pagenum_link($max_page).'" title="' . __('Last','wpbootstrap') . '">'.$last_page_text.'</a></li>';
   }
+   */
+
   echo '</ul>'.$after."";
 }
 
@@ -703,4 +710,14 @@ function wp_bootstrap_filter_ptags_on_images( $content ){
 }
 add_filter( 'the_content', 'wp_bootstrap_filter_ptags_on_images' );
 
+
+// navbarのクラス
+function wpb_navbar_class() {
+    //return 'navbar navbar-default navbar-fixed-top';
+    return 'navbar navbar-default';
+}
+
+
 ?>
+
+

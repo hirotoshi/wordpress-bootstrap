@@ -37,7 +37,7 @@
 			</div> <!-- end #container -->
 
 			<div id="totop" class="totop">
-				<a id="totop" class="totop btn btn-warning" href="#"><i class="fa fa-caret-up"></i>トップへ</a>
+				<a id="totop" class="totop btn btn-default" href="#"><i class="fa fa-caret-up"></i>トップへ</a>
 			</div>
 
 			<!--[if lt IE 7 ]>

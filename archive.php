@@ -3,6 +3,7 @@
 			<div id="content" class="clearfix row">
 			
 				<div id="main" class="col-sm-8 clearfix" role="main">
+					<?php get_template_part('breadcrumbs'); ?>
 				
 					<div class="page-header">
 					<?php if (is_category()) { ?>

@@ -4,39 +4,23 @@ WP-Bootstrap - Layout
 
 */
 
-
-
+* {
+	font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
+}
 
 /* layout */
 
 body{
 	// This is to account for the fixed navbar
-	padding-top: 60px;
+	//padding-top: 60px;
+
+  /* Admin Top Navigation fix */
+  .admin-bar .navbar-fixed-top{ 
+    top: 28px; 
+  }
 }
 
-/* Admin Top Navigation fix */
-body.admin-bar .navbar-fixed-top{ 
-	top: 28px; 
-}
 
-.navbar .brand{
-	color: #000;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.125);
-	font-weight: bold !important;
-}
-
-.nav-container{
-	padding-left: 0;
-	padding-right: 0;
-}
-
-#inner-header{
-	width: 100%;
-}
-
-input, textarea, select, .uneditable-input {
-	margin-bottom: 0;
-}
 
 .navbar-search{
 	padding-left: 0;
@@ -44,6 +28,28 @@ input, textarea, select, .uneditable-input {
 
 #content{
 	padding: 10px 0 0;
+}
+
+//ヘッダー
+.page-header {
+  margin-top: 10px;
+  h1 {
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 30px;
+    color: #333;
+    margin-bottom: 10px;
+    a:hover {
+      text-decoration: underline;
+    }
+    a {
+      color: #333;
+      text-decoration: none;
+    }
+
+  }
+
+
 }
 
 .more-link{
