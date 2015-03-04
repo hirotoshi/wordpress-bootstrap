@@ -54,65 +54,46 @@ if( !function_exists( "wp_bootstrap_theme_support" ) ) {
     // Add post format support - if these are not needed, comment them out
     add_theme_support( 'post-formats',      // post formats
       array( 
-        'aside',   // title less blurb
-        'gallery', // gallery of images
-        'link',    // quick link to other site
-        'image',   // an image
-        'quote',   // a quick quote
-        'status',  // a Facebook like status update
-        'video',   // video 
-        'audio',   // audio
-        'chat'     // chat transcript 
+//        'aside',   // title less blurb
+//        'gallery', // gallery of images
+//        'link',    // quick link to other site
+//        'image',   // an image
+//        'quote',   // a quick quote
+//        'status',  // a Facebook like status update
+//        'video',   // video 
+//        'audio',   // audio
+//        'chat'     // chat transcript 
       )
     );  
 
     add_theme_support( 'menus' );            // wp menus
-    
-    register_nav_menus(                      // wp3+ menus
-      array( 
-        'main_nav' => 'The Main Menu',   // main nav in header
-        'footer_links' => 'Footer Links' // secondary nav in footer
-      )
-    );  
+
+    //カスタムヘッダー
+    $args = array(
+        'width'         => 640,
+        'height'        => 200,
+        'flex-height' => true,
+        //'default-image' => get_template_directory_uri() . '/images/stinger3.png',
+    );
+    add_theme_support( 'custom-header', $args );
+
   }
 }
 // launching this stuff after theme setup
 add_action( 'after_setup_theme','wp_bootstrap_theme_support' );
 
 function wp_bootstrap_main_nav() {
-  // Display the WordPress menu if available
-  wp_nav_menu( 
-    array( 
-      'menu' => 'main_nav', /* menu name */
-      'menu_class' => 'nav navbar-nav',
-      'theme_location' => 'main_nav', /* where in the theme it's assigned */
-      'container' => 'false', /* container class */
-      'fallback_cb' => 'wp_bootstrap_main_nav_fallback', /* menu fallback */
-      'walker' => new Bootstrap_walker()
+    // Display the WordPress menu if available
+    wp_nav_menu(
+        array(
+            'menu' => 'main_nav', /* menu name */
+            'menu_class' => 'nav navbar-nav',
+            'theme_location' => 'main_nav', /* where in the theme it's assigned */
+'container' => 'false', /* container class */
+'fallback_cb' => 'wp_bootstrap_main_nav_fallback', /* menu fallback */
+'walker' => new Bootstrap_walker()
     )
-  );
-}
-
-function wp_bootstrap_footer_links() { 
-  // Display the WordPress menu if available
-  wp_nav_menu(
-    array(
-      'menu' => 'footer_links', /* menu name */
-      'theme_location' => 'footer_links', /* where in the theme it's assigned */
-      'container_class' => 'footer-links clearfix', /* container class */
-      'fallback_cb' => 'wp_bootstrap_footer_links_fallback' /* menu fallback */
-    )
-  );
-}
-
-// this is the fallback for header menu
-function wp_bootstrap_main_nav_fallback() { 
-  /* you can put a default here if you like */ 
-}
-
-// this is the fallback for footer menu
-function wp_bootstrap_footer_links_fallback() { 
-  /* you can put a default here if you like */ 
+);
 }
 
 // Shortcodes
@@ -120,15 +101,6 @@ require_once('library/shortcodes.php');
 
 // Admin Functions (commented out by default)
 // require_once('library/admin.php');         // custom admin functions
-
-// Custom Backend Footer
-add_filter('admin_footer_text', 'wp_bootstrap_custom_admin_footer');
-function wp_bootstrap_custom_admin_footer() {
-	echo '<span id="footer-thankyou">Developed by <a href="http://320press.com" target="_blank">320press</a></span>. Built using <a href="http://themble.com/bones" target="_blank">Bones</a>.';
-}
-
-// adding it to the admin area
-add_filter('admin_footer_text', 'wp_bootstrap_custom_admin_footer');
 
 // Set content width
 if ( ! isset( $content_width ) ) $content_width = 580;
@@ -164,47 +136,54 @@ you like. Enjoy!
 
 // Sidebars & Widgetizes Areas
 function wp_bootstrap_register_sidebars() {
+
+
   register_sidebar(array(
-  	'id' => 'sidebar1',
-  	'name' => 'Main Sidebar',
-  	'description' => 'Used on every page BUT the homepage page template.',
+  	'id' => 'top',
+  	'name' => 'Top Page',
+  	'description' => 'Topページに表示するウィジェット',
   	'before_widget' => '<div id="%1$s" class="widget %2$s">',
   	'after_widget' => '</div>',
   	'before_title' => '<h4 class="widgettitle">',
   	'after_title' => '</h4>',
   ));
-    
+
   register_sidebar(array(
-  	'id' => 'sidebar2',
-  	'name' => 'Homepage Sidebar',
-  	'description' => 'Used only on the homepage page template.',
+  	'id' => 'header',
+  	'name' => 'Header',
+  	'description' => '全ページのヘッダーへ表示するウィジェット',
   	'before_widget' => '<div id="%1$s" class="widget %2$s">',
   	'after_widget' => '</div>',
   	'before_title' => '<h4 class="widgettitle">',
   	'after_title' => '</h4>',
   ));
-    
+
   register_sidebar(array(
-    'id' => 'footer1',
-    'name' => 'Footer 1',
+  	'id' => 'sidebar',
+  	'name' => 'Sidebar',
+  	'description' => '全ページのサイドバーへ表示するウィジェット',
+  	'before_widget' => '<div id="%1$s" class="widget %2$s">',
+  	'after_widget' => '</div>',
+  	'before_title' => '<h4 class="widgettitle">',
+  	'after_title' => '</h4>',
+  ));
+
+
+  register_sidebar(array(
+    'id' => 'footer',
+    'name' => 'Footer',
+  	'description' => '全ページのフッターに表示するウィジェット',
     'before_widget' => '<div id="%1$s" class="widget col-sm-4 %2$s">',
     'after_widget' => '</div>',
     'before_title' => '<h4 class="widgettitle">',
     'after_title' => '</h4>',
   ));
 
-  register_sidebar(array(
-    'id' => 'footer2',
-    'name' => 'Footer 2',
-    'before_widget' => '<div id="%1$s" class="widget col-sm-4 %2$s">',
-    'after_widget' => '</div>',
-    'before_title' => '<h4 class="widgettitle">',
-    'after_title' => '</h4>',
-  ));
 
   register_sidebar(array(
-    'id' => 'footer3',
-    'name' => 'Footer 3',
+    'id' => 'post-bottom',
+    'name' => 'Post Bottom',
+  	'description' => '全投稿ページの記事下部に表示するウィジェット',
     'before_widget' => '<div id="%1$s" class="widget col-sm-4 %2$s">',
     'after_widget' => '</div>',
     'before_title' => '<h4 class="widgettitle">',
