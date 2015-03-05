@@ -3,9 +3,9 @@
 		<div class="media">
 			<div class="media-left">
 				<?php if ( has_post_thumbnail() ): // サムネイルを持っているときの処理 ?>
-				<?php the_post_thumbnail( 'thumb100', array('class'=>'media-image') ); ?>
+				<?php the_post_thumbnail( 'thumb80', array('class'=>'media-image') ); ?>
 				<?php else: // サムネイルを持っていないときの処理 ?>
-				<img class="media-object" src="<?php echo get_template_directory_uri(); ?>/images/no-img.png" alt="no image" title="no image" width="100" height="100" />
+				<img class="media-object" src="<?php echo get_template_directory_uri(); ?>/images/no-img.png" alt="no image" title="no image" width="80" height="80" />
 				<?php endif; ?>
 			</div>
 			<div class="media-body">

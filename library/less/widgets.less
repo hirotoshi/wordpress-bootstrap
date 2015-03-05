@@ -5,9 +5,67 @@ WP-Bootstrap - Widgets
 */
 
 
+.widget {
+	margin-bottom: 20px;
+
+  >ul {
+    @media (min-width: @screen-sm-min) {
+      margin:0 10px;
+    }
+  }
+  >div {
+   @media (min-width: @screen-sm-min) {
+      margin:0 20px;
+    }
+  }
+
+  >form{
+   @media (min-width: @screen-sm-min) {
+     margin-left: 10px;
+   }
+  }
+
+  ul {
+    padding:0;
 
 
-.widget{
+    border-radius:5px;
+    border-top:1px solid @gray-lighter;
+    border-left:1px solid @gray-lighter;
+    border-right:1px solid @gray-lighter;
+    background-color:#fff;
+  }
+  li {
+    list-style:none;
+    padding : 10px;
+    border-bottom:1px solid @gray-lighter;
+  }
+
+
+  .widget-title { 
+    color: @headline-color;
+    font-size: 16px;
+    font-weight: normal;
+    padding : 10px 10px 8px 10px;
+    margin : 10px -10px 10px -10px;
+
+    @media (min-width: @screen-sm-min) {
+      margin: 20px 0;
+    }
+    background: @headline-bg;
+    #gradient > .vertical(lighten(@headline-bg,10%), lighten(@headline-bg,5%));
+    border-radius: 4px;
+    text-shadow : 1px 2px 2px #000;
+    vertical-align:bottom;
+    small {
+      color : @gray-lighter;
+    }
+  }
+}
+
+
+//トップページのウィジェット
+.widget-top {
 	margin-bottom: 18px;
 
   ul {
@@ -20,14 +78,43 @@ WP-Bootstrap - Widgets
   }
   li {
     list-style:none;
-    padding : 10px;
-    border-bottom:1px solid @gray-lighter;
+    position:relative;
+    border:none;
+    padding: 0;
+    margin: 0;
+
+    a {
+      padding : 10px;
+      border-bottom:1px solid @gray-lighter;
+      height: 60px;
+      line-height: 40px;
+      width:100%;
+      display:inline-block;
+      color:@gray-dark;
+      font-weight: bold;
+    }
+  }
+  li:after {
+    content: "\f105";
+    font-family: FontAwesome;
+    float:right;
+    position: absolute;
+    right: 10px;
+    top: 20%;
+    vertical-align:middle;
+    font-size:20px;
+  }
+
+  .widget-title { 
+    font-size: 20px;
+    padding : 10px 10px 5px 10px;
+    #gradient > .vertical(lighten(@headline-bg,5%), darken(@headline-bg,10%));
   }
 }
 
-.widgettitle{
-	margin-bottom: 9px;
-}
+
+
+
 
 #tag-cloud{
 	margin-bottom: 18px;

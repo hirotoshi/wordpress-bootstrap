@@ -6,23 +6,9 @@ $locale = get_locale();
 $locale_file = TEMPLATEPATH . "/languages/$locale.php";
 if ( is_readable( $locale_file ) ) require_once( $locale_file );
 
-// Clean up the WordPress Head
-if( !function_exists( "wp_bootstrap_head_cleanup" ) ) {  
-  function wp_bootstrap_head_cleanup() {
-    // remove header links
-    remove_action( 'wp_head', 'feed_links_extra', 3 );                    // Category Feeds
-    remove_action( 'wp_head', 'feed_links', 2 );                          // Post and Comment Feeds
-    remove_action( 'wp_head', 'rsd_link' );                               // EditURI link
-    remove_action( 'wp_head', 'wlwmanifest_link' );                       // Windows Live Writer
-    remove_action( 'wp_head', 'index_rel_link' );                         // index link
-    remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );            // previous link
-    remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );             // start link
-    remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 ); // Links for Adjacent Posts
-    remove_action( 'wp_head', 'wp_generator' );                           // WP version
-  }
-}
-// Launch operation cleanup
-add_action( 'init', 'wp_bootstrap_head_cleanup' );
+//ヘッダーのクリーンアップ
+require_once('wpb-includes/headcleanup.php');
+
 
 // remove WP version from RSS
 if( !function_exists( "wp_bootstrap_rss_version" ) ) {  
@@ -30,74 +16,22 @@ if( !function_exists( "wp_bootstrap_rss_version" ) ) {
 }
 add_filter( 'the_generator', 'wp_bootstrap_rss_version' );
 
-// Remove the […] in a Read More link
-/*
-if( !function_exists( "wp_bootstrap_excerpt_more" ) ) {  
-  function wp_bootstrap_excerpt_more( $more ) {
-    global $post;
-    return '...  <a href="'. get_permalink($post->ID) . '" class="more-link" title="Read '.get_the_title($post->ID).'">Read more &raquo;</a>';
-  }
-}
-add_filter('excerpt_more', 'wp_bootstrap_excerpt_more');
- */
+//テーマサポート
+require_once('wpb-includes/themesupport.php');
 
-// Add WP 3+ Functions & Theme Support
-if( !function_exists( "wp_bootstrap_theme_support" ) ) {  
-  function wp_bootstrap_theme_support() {
-    add_theme_support( 'post-thumbnails' );      // wp thumbnails (sizes handled in functions.php)
-    set_post_thumbnail_size( 825, 510, true );
-    add_image_size('thumb100',100,100,true);
-    add_image_size('thumb150',150,150,true);
-    add_theme_support( 'custom-background' );  // wp custom background
-    add_theme_support( 'automatic-feed-links' ); // rss
-
-    // Add post format support - if these are not needed, comment them out
-    add_theme_support( 'post-formats',      // post formats
-      array( 
-//        'aside',   // title less blurb
-//        'gallery', // gallery of images
-//        'link',    // quick link to other site
-//        'image',   // an image
-//        'quote',   // a quick quote
-//        'status',  // a Facebook like status update
-//        'video',   // video 
-//        'audio',   // audio
-//        'chat'     // chat transcript 
-      )
-    );  
-
-    add_theme_support( 'menus' );            // wp menus
-
-    //カスタムヘッダー
-    $args = array(
-        'width'         => 640,
-        'height'        => 200,
-        'flex-height' => true,
-        //'default-image' => get_template_directory_uri() . '/images/stinger3.png',
-    );
-    add_theme_support( 'custom-header', $args );
-
-  }
-}
-// launching this stuff after theme setup
-add_action( 'after_setup_theme','wp_bootstrap_theme_support' );
-
-function wp_bootstrap_main_nav() {
-    // Display the WordPress menu if available
-    wp_nav_menu(
-        array(
-            'menu' => 'main_nav', /* menu name */
-            'menu_class' => 'nav navbar-nav',
-            'theme_location' => 'main_nav', /* where in the theme it's assigned */
-'container' => 'false', /* container class */
-'fallback_cb' => 'wp_bootstrap_main_nav_fallback', /* menu fallback */
-'walker' => new Bootstrap_walker()
-    )
-);
-}
+//ビューヘルパー関数
+require_once('wpb-includes/helpers.php');
 
 // Shortcodes
-require_once('library/shortcodes.php');
+require_once('wpb-includes/shortcodes.php');
+
+// Widgets
+//require_once('library/widgets.php');
+require_once('wpb-includes/widgets.php');
+
+//抜粋
+require_once('wpb-includes/excerpt.php');
+
 
 // Admin Functions (commented out by default)
 // require_once('library/admin.php');         // custom admin functions
@@ -112,145 +46,8 @@ add_image_size( 'wpbs-featured', 780, 300, true );
 add_image_size( 'wpbs-featured-home', 970, 311, true);
 add_image_size( 'wpbs-featured-carousel', 970, 400, true);
 
-/* 
-to add more sizes, simply copy a line from above 
-and change the dimensions & name. As long as you
-upload a "featured image" as large as the biggest
-set width or height, all the other sizes will be
-auto-cropped.
-
-To call a different size, simply change the text
-inside the thumbnail function.
-
-For example, to call the 300 x 300 sized image, 
-we would use the function:
-<?php the_post_thumbnail( 'bones-thumb-300' ); ?>
-for the 600 x 100 image:
-<?php the_post_thumbnail( 'bones-thumb-600' ); ?>
-
-You can change the names and dimensions to whatever
-you like. Enjoy!
-*/
-
-/************* ACTIVE SIDEBARS ********************/
-
-// Sidebars & Widgetizes Areas
-function wp_bootstrap_register_sidebars() {
 
 
-  register_sidebar(array(
-  	'id' => 'top',
-  	'name' => 'Top Page',
-  	'description' => 'Topページに表示するウィジェット',
-  	'before_widget' => '<div id="%1$s" class="widget %2$s">',
-  	'after_widget' => '</div>',
-  	'before_title' => '<h4 class="widgettitle">',
-  	'after_title' => '</h4>',
-  ));
-
-  register_sidebar(array(
-  	'id' => 'header',
-  	'name' => 'Header',
-  	'description' => '全ページのヘッダーへ表示するウィジェット',
-  	'before_widget' => '<div id="%1$s" class="widget %2$s">',
-  	'after_widget' => '</div>',
-  	'before_title' => '<h4 class="widgettitle">',
-  	'after_title' => '</h4>',
-  ));
-
-  register_sidebar(array(
-  	'id' => 'sidebar',
-  	'name' => 'Sidebar',
-  	'description' => '全ページのサイドバーへ表示するウィジェット',
-  	'before_widget' => '<div id="%1$s" class="widget %2$s">',
-  	'after_widget' => '</div>',
-  	'before_title' => '<h4 class="widgettitle">',
-  	'after_title' => '</h4>',
-  ));
-
-
-  register_sidebar(array(
-    'id' => 'footer',
-    'name' => 'Footer',
-  	'description' => '全ページのフッターに表示するウィジェット',
-    'before_widget' => '<div id="%1$s" class="widget col-sm-4 %2$s">',
-    'after_widget' => '</div>',
-    'before_title' => '<h4 class="widgettitle">',
-    'after_title' => '</h4>',
-  ));
-
-
-  register_sidebar(array(
-    'id' => 'post-bottom',
-    'name' => 'Post Bottom',
-  	'description' => '全投稿ページの記事下部に表示するウィジェット',
-    'before_widget' => '<div id="%1$s" class="widget col-sm-4 %2$s">',
-    'after_widget' => '</div>',
-    'before_title' => '<h4 class="widgettitle">',
-    'after_title' => '</h4>',
-  ));
-    
-    
-  /* 
-  to add more sidebars or widgetized areas, just copy
-  and edit the above sidebar code. In order to call 
-  your new sidebar just use the following code:
-  
-  Just change the name to whatever your new
-  sidebar's id is, for example:
-  
-  To call the sidebar in your template, you can just copy
-  the sidebar.php file and rename it to your sidebar's name.
-  So using the above example, it would be:
-  sidebar-sidebar2.php
-  
-  */
-} // don't remove this bracket!
-add_action( 'widgets_init', 'wp_bootstrap_register_sidebars' );
-
-/************* COMMENT LAYOUT *********************/
-		
-// Comment Layout
-function wp_bootstrap_comments($comment, $args, $depth) {
-   $GLOBALS['comment'] = $comment; ?>
-	<li <?php comment_class(); ?>>
-		<article id="comment-<?php comment_ID(); ?>" class="clearfix">
-			<div class="comment-author vcard clearfix">
-				<div class="avatar col-sm-3">
-					<?php echo get_avatar( $comment, $size='75' ); ?>
-				</div>
-				<div class="col-sm-9 comment-text">
-					<?php printf('<h4>%s</h4>', get_comment_author_link()) ?>
-					<?php edit_comment_link(__('Edit','wpbootstrap'),'<span class="edit-comment btn btn-sm btn-info"><i class="glyphicon-white glyphicon-pencil"></i>','</span>') ?>
-                    
-                    <?php if ($comment->comment_approved == '0') : ?>
-       					<div class="alert-message success">
-          				<p><?php _e('Your comment is awaiting moderation.','wpbootstrap') ?></p>
-          				</div>
-					<?php endif; ?>
-                    
-                    <?php comment_text() ?>
-                    
-                    <time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time('F jS, Y'); ?> </a></time>
-                    
-					<?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
-                </div>
-			</div>
-		</article>
-    <!-- </li> is added by wordpress automatically -->
-<?php
-} // don't remove this bracket!
-
-// Display trackbacks/pings callback function
-function list_pings($comment, $args, $depth) {
-       $GLOBALS['comment'] = $comment;
-?>
-        <li id="comment-<?php comment_ID(); ?>"><i class="icon icon-share-alt"></i>&nbsp;<?php comment_author_link(); ?>
-<?php 
-
-}
-
-/************* SEARCH FORM LAYOUT *****************/
 
 /****************** password protected post form *****/
 
@@ -438,71 +235,6 @@ function wp_bootstrap_add_class_attachment_link( $html ) {
 }
 add_filter( 'wp_get_attachment_link', 'wp_bootstrap_add_class_attachment_link', 10, 1 );
 
-
-// Menu output mods
-class Bootstrap_walker extends Walker_Nav_Menu{
-
-  function start_el(&$output, $object, $depth = 0, $args = Array(), $current_object_id = 0){
-
-	 global $wp_query;
-	 $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-	
-	 $class_names = $value = '';
-	
-		// If the item has children, add the dropdown class for bootstrap
-		if ( $args->has_children ) {
-			$class_names = "dropdown ";
-		}
-	
-		$classes = empty( $object->classes ) ? array() : (array) $object->classes;
-		
-		$class_names .= join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $object ) );
-		$class_names = ' class="'. esc_attr( $class_names ) . '"';
-       
-   	$output .= $indent . '<li id="menu-item-'. $object->ID . '"' . $value . $class_names .'>';
-
-   	$attributes  = ! empty( $object->attr_title ) ? ' title="'  . esc_attr( $object->attr_title ) .'"' : '';
-   	$attributes .= ! empty( $object->target )     ? ' target="' . esc_attr( $object->target     ) .'"' : '';
-   	$attributes .= ! empty( $object->xfn )        ? ' rel="'    . esc_attr( $object->xfn        ) .'"' : '';
-   	$attributes .= ! empty( $object->url )        ? ' href="'   . esc_attr( $object->url        ) .'"' : '';
-
-   	// if the item has children add these two attributes to the anchor tag
-   	if ( $args->has_children ) {
-		  $attributes .= ' class="dropdown-toggle" data-toggle="dropdown"';
-    }
-
-    $item_output = $args->before;
-    $item_output .= '<a'. $attributes .'>';
-    $item_output .= $args->link_before .apply_filters( 'the_title', $object->title, $object->ID );
-    $item_output .= $args->link_after;
-
-    // if the item has children add the caret just before closing the anchor tag
-    if ( $args->has_children ) {
-    	$item_output .= '<b class="caret"></b></a>';
-    }
-    else {
-    	$item_output .= '</a>';
-    }
-
-    $item_output .= $args->after;
-
-    $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $object, $depth, $args );
-  } // end start_el function
-        
-  function start_lvl(&$output, $depth = 0, $args = Array()) {
-    $indent = str_repeat("\t", $depth);
-    $output .= "\n$indent<ul class=\"dropdown-menu\">\n";
-  }
-      
-	function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ){
-    $id_field = $this->db_fields['id'];
-    if ( is_object( $args[0] ) ) {
-        $args[0]->has_children = ! empty( $children_elements[$element->$id_field] );
-    }
-    return parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
-  }        
-}
-
 add_editor_style('editor-style.css');
 
 function wp_bootstrap_add_active_class($classes, $item) {
@@ -516,55 +248,11 @@ function wp_bootstrap_add_active_class($classes, $item) {
 // Add Twitter Bootstrap's standard 'active' class name to the active nav link item
 add_filter('nav_menu_css_class', 'wp_bootstrap_add_active_class', 10, 2 );
 
-// enqueue styles
-if( !function_exists("wp_bootstrap_theme_styles") ) {  
-    function wp_bootstrap_theme_styles() { 
-        // This is the compiled css file from LESS - this means you compile the LESS file locally and put it in the appropriate directory if you want to make any changes to the master bootstrap.css.
-        //wp_register_style( 'wpbs', get_template_directory_uri() . '/library/dist/css/styles.7b6e3480.min.css', array(), '1.0', 'all' );
-        //wp_enqueue_style( 'wpbs' );
+// Styles
+require_once('wpb-includes/styles.php');
 
-        // For child themes
-        wp_register_style( 'wpbs-style', get_stylesheet_directory_uri() . '/style.css', array(), '1.0', 'all' );
-        wp_enqueue_style( 'wpbs-style' );
-
-        wp_register_style( 'font-awesome', get_stylesheet_directory_uri() . '/bower_components/font-awesome/css/font-awesome.css', array(), '1.0', 'all' );
-        wp_enqueue_style( 'font-awesome' );
-    }
-}
-add_action( 'wp_enqueue_scripts', 'wp_bootstrap_theme_styles' );
-
-// enqueue javascript
-if( !function_exists( "wp_bootstrap_theme_js" ) ) {  
-  function wp_bootstrap_theme_js(){
-
-    if ( !is_admin() ){
-      if ( is_singular() AND comments_open() AND ( get_option( 'thread_comments' ) == 1) ) 
-        wp_enqueue_script( 'comment-reply' );
-    }
-
-    // This is the full Bootstrap js distribution file. If you only use a few components that require the js files consider loading them individually instead
-    wp_register_script( 'bootstrap', 
-      get_template_directory_uri() . '/bower_components/bootstrap/dist/js/bootstrap.js', 
-      array('jquery'), 
-      '1.2' );
-
-    wp_register_script( 'wpbs-js', 
-      get_template_directory_uri() . '/library/dist/js/scripts.d1e3d952.min.js',
-      array('bootstrap'), 
-      '1.2' );
-  
-    wp_register_script( 'modernizr', 
-      get_template_directory_uri() . '/bower_components/modernizer/modernizr.js', 
-      array('jquery'), 
-      '1.2' );
-  
-    wp_enqueue_script( 'bootstrap' );
-    wp_enqueue_script( 'wpbs-js' );
-    wp_enqueue_script( 'modernizr' );
-    
-  }
-}
-add_action( 'wp_enqueue_scripts', 'wp_bootstrap_theme_js' );
+// Scripts
+require_once('wpb-includes/scripts.php');
 
 // Get <head> <title> to behave like other themes
 function wp_bootstrap_wp_title( $title, $sep ) {
@@ -698,5 +386,3 @@ function wpb_navbar_class() {
 
 
 ?>
-
-

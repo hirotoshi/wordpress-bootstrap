@@ -27,12 +27,17 @@ body{
 }
 
 #content{
-	padding: 10px 0 0;
+  @media (min-width: @screen-sm-min) {
+    padding: 10px 0 0;
+  }
 }
 
 //ヘッダー
 .page-header {
   margin-top: 10px;
+  margin-bottom: 10px;
+  border : none;
+  /*
   h1 {
     font-size: 26px;
     font-weight: bold;
@@ -48,6 +53,7 @@ body{
     }
 
   }
+  */
 
 
 }
@@ -90,4 +96,14 @@ body{
   bottom: 10px;
   right: 10px;
   z-index: 104400;
+}
+
+
+.nav-more {
+  text-align:right;
+
+  a:after {
+    content: "\f105";
+    font-family: FontAwesome;
+  }
 }

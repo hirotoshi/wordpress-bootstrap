@@ -4,13 +4,16 @@
 			
 				<div id="main" class="col col-lg-8 clearfix" role="main">
 				
-					<div class="page-header"><h1><span><?php _e("Search Results for","wpbootstrap"); ?>:</span> <?php echo esc_attr(get_search_query()); ?></h1></div>
+					<div class="page-header">
+						<h1 class="headline"><span><?php _e("Search Results for","wpbootstrap"); ?>:</span> <?php echo esc_attr(get_search_query()); ?></h1></div>
 
+					<div class="media-list">
 					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 						<section class="post_content">
 							<?php get_template_part( 'content'); ?>
 						</section> <!-- end article section -->
 					<?php endwhile; ?>	
+					</div>
 					
 					<?php if (function_exists('wp_bootstrap_page_navi')) { // if expirimental feature is active ?>
 						
