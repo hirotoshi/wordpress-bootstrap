@@ -385,4 +385,28 @@ function wpb_navbar_class() {
 }
 
 
-?>
+function stinger_customize_register($wp_customize) {
+
+    $wp_customize->add_section( 'wpb_no_image', array(
+        'title' => 'noimage画像',
+        'priority' => 10,
+    ) );
+
+    $wp_customize->add_setting( 'wpb_no_image', array(
+        'default' => '',
+        'type' => 'option',
+        'capability' => 'edit_theme_options',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Image_Control(
+        $wp_customize,
+        'No_Image',
+        array(
+            'label' => '画像',
+            'section' => 'wpb_no_image',
+            'settings' => 'wpb_no_image',
+        )
+    ) );
+}
+add_action('customize_register', 'stinger_customize_register');
+

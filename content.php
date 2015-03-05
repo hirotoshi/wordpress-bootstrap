@@ -4,6 +4,8 @@
 			<div class="media-left">
 				<?php if ( has_post_thumbnail() ): // サムネイルを持っているときの処理 ?>
 				<?php the_post_thumbnail( 'thumb80', array('class'=>'media-image') ); ?>
+				<?php elseif ( get_option('wpb_no_image') ) :?>
+				<img class="media-object" src="<?php echo get_option('wpb_no_image') ?>" alt="no image" title="no image" width="80" height="80" />
 				<?php else: // サムネイルを持っていないときの処理 ?>
 				<img class="media-object" src="<?php echo get_template_directory_uri(); ?>/images/no-img.png" alt="no image" title="no image" width="80" height="80" />
 				<?php endif; ?>
