@@ -6,6 +6,8 @@ $locale = get_locale();
 $locale_file = TEMPLATEPATH . "/languages/$locale.php";
 if ( is_readable( $locale_file ) ) require_once( $locale_file );
 
+require_once('wpb-includes/admin/init.php');
+
 //ヘッダーのクリーンアップ
 require_once('wpb-includes/headcleanup.php');
 
@@ -410,3 +412,14 @@ function stinger_customize_register($wp_customize) {
 }
 add_action('customize_register', 'stinger_customize_register');
 
+add_filter( 'get_archives_link', 'my_archives_link' );
+function my_archives_link( $output ) {
+    $output = preg_replace('/<\/a>\s*(&nbsp;)\((\d+)\)/',' <span class="badge">$2</span></a>',$output);
+    return $output;
+}
+
+add_filter( 'wp_list_categories', 'my_list_categories', 10, 2 );
+function my_list_categories( $output, $args ) {
+    $output = preg_replace('/<\/a>\s*\((\d+)\)/',' <sapn class="badge">$1</span></a>',$output);
+    return $output;
+}

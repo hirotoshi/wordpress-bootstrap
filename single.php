@@ -28,12 +28,45 @@
 					<?php wp_link_pages(); ?>
 				</section> <!-- end article section -->
 				<footer>
-					<h4>関連キーワード</h4>
-          <?php the_tags('<p class="tags"><span class="label label-default"><i class="fa fa-tag"></i>', 
+                    <div class="widget widget-post-bottom">
+					<?php if ( get_the_tags() ) :?>
+                    <h4 class="widget-title">関連キーワード</h4>
+<?php the_tags('<p class="tags"><span class="label label-default"><i class="fa fa-tag"></i>', 
 '</span>&nbsp;<span class="label label-default"><i class="fa fa-tag"></i>', '</span></p>'); ?>
+                <?php endif ?>
+                    <hr />
+                    <?php get_template_part('sns'); ?>
+
+                        <h4 class="widget-title">関連記事</h4>
+<?php 
+if (function_exists('wpp_get_mostpopular')) {
+    $cats = array();
+    $categories = get_the_category(); 
+    foreach ( $categories as $cat ) {
+        $cats[] = $cat->term_id;
+    }
+    $args = array(
+            'pid' => get_the_ID(),
+            'cat' => implode(',',$cats),
+            'range' => 'daily',
+            'title_length' => 30,
+            'limit' => 4,
+            'post_type' => 'post',
+            'order_by' => 'views',
+            'stats_comments' => 0,
+            'stats_views' => 0,
+            'thumbnail_selection' => 'usergenerated',
+            );
+    wpp_get_mostpopular($args);
+}
+?>
+</div>
+
+                    <?php dynamic_sidebar( 'post-bottom' ); ?>
 				</footer> <!-- end article footer -->
 			</div>
 		</article> <!-- end article -->
+        <hr />
 		<?php comments_template('',true); ?>
 		<?php endwhile; ?>			
 		<?php else : ?>
@@ -45,6 +78,7 @@
 				<p><?php _e("Sorry, but the requested resource was not found on this site.", "wpbootstrap"); ?></p>
 			</section>
 			<footer>
+                    <?php dynamic_sidebar( 'post-bottom' ); ?>
 			</footer>
 		</article>
 		<?php endif; ?>

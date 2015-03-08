@@ -12,9 +12,11 @@
 			</div>
 			<div class="media-body">
 				<div class="media-heading">
-					<h4 class="entry-title"><? the_title() ?></h4>
+					<h4 class="entry-title"><? the_title() ?>
+						<small><?php the_time('Y/m/d') ;?></small>
+					</h4>
 				</div>
-				<p class="desc">
+				<p class="desc hidden-xs">
 				<?= strip_tags( get_the_excerpt(30) ); ?>
 				</p>
 				<!--

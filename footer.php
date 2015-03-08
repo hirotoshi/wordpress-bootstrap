@@ -41,6 +41,26 @@
 
 	<?php wp_footer(); // js scripts are inserted using this function ?>
 
+<!-- twitter -->
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<!-- facebook -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.0";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- google+ -->
+<script src="https://apis.google.com/js/platform.js" async defer>
+{lang: 'ja'}
+</script>
+
+<!-- hatena bookmark -->
+<script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async    "></script>
+<!-- mixi platform -->
+<script type="text/javascript">(function(d) {var s = d.createElement('script'); s.type = 'text/javascript'; s.async = true;s.src = '//static.mixi.jp/js/plugins.js#lang=ja';d.getElementsByTagName('head')[0].appendChild(s);})(document);</script>
 
 	</body>
 

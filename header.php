@@ -38,10 +38,8 @@
 			<div class="<?php echo wpb_navbar_class() ?>">
 				<div class="container">
 					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
+						<button type="button" class="navbar-toggle btn btn-default" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                            <i class="fa fa-bars"></i>
 						</button>
 						<a class="navbar-brand" title="<?php echo get_bloginfo('description'); ?>" href="<?php echo home_url(); ?>">
 							<?php if (get_header_image()) :?>
@@ -54,14 +52,7 @@
 					</div>
 
 					<div class="collapse navbar-collapse navbar-responsive-collapse">
-                        <?php wp_bootstrap_main_nav(); ?>
-						<?php // if(of_get_option('search_bar', '1')) {?>
-						<form class="navbar-form navbar-right" role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
-							<div class="form-group">
-								<input name="s" id="s" type="text" class="search-query form-control" autocomplete="off" placeholder="<?php _e('Search','wpbootstrap'); ?>">
-							</div>
-						</form>
-						<?php // } ?>
+                        <?php dynamic_sidebar( 'header' ); ?>
 					</div>
 
 				</div> <!-- end .container -->

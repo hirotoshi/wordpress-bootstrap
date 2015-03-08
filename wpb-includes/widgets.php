@@ -3,6 +3,7 @@
 //widgetsを登録
 require_once('widgets/recentposts.php');
 require_once('widgets/populars.php');
+require_once('widgets/ad.php');
 //require_once('widgets/menu.php');
 
 /************* ACTIVE SIDEBARS ********************/
@@ -17,7 +18,7 @@ function wp_bootstrap_register_sidebars() {
   	'description' => 'Topページに表示するウィジェット',
   	'before_widget' => '<div id="%1$s" class="widget-top widget %2$s">',
   	'after_widget' => '</div>',
-  	'before_title' => '<h2 class="widget-title">',
+  	'before_title' => '<h2 class="widget-title headline">',
   	'after_title' => '</h2>',
   ));
 
@@ -51,7 +52,6 @@ function wp_bootstrap_register_sidebars() {
     'before_title' => '<h4 class="widget-title">',
     'after_title' => '</h4>',
   ));
-
 
   register_sidebar(array(
     'id' => 'post-bottom',

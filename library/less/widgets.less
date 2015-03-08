@@ -4,69 +4,7 @@ WP-Bootstrap - Widgets
 
 */
 
-
-.widget {
-	margin-bottom: 20px;
-
-  >ul {
-    @media (min-width: @screen-sm-min) {
-      margin:0 10px;
-    }
-  }
-  >div {
-   @media (min-width: @screen-sm-min) {
-      margin:0 20px;
-    }
-  }
-
-  >form{
-   @media (min-width: @screen-sm-min) {
-     margin-left: 10px;
-   }
-  }
-
-  ul {
-    padding:0;
-
-
-    border-radius:5px;
-    border-top:1px solid @gray-lighter;
-    border-left:1px solid @gray-lighter;
-    border-right:1px solid @gray-lighter;
-    background-color:#fff;
-  }
-  li {
-    list-style:none;
-    padding : 10px;
-    border-bottom:1px solid @gray-lighter;
-  }
-
-
-  .widget-title { 
-    color: @headline-color;
-    font-size: 16px;
-    font-weight: normal;
-    padding : 10px 10px 8px 10px;
-    margin : 10px -10px 10px -10px;
-
-    @media (min-width: @screen-sm-min) {
-      margin: 20px 0;
-    }
-    background: @headline-bg;
-    #gradient > .vertical(lighten(@headline-bg,10%), lighten(@headline-bg,5%));
-    border-radius: 4px;
-    text-shadow : 1px 2px 2px #000;
-    vertical-align:bottom;
-    small {
-      color : @gray-lighter;
-    }
-  }
-}
-
-
-//トップページのウィジェット
-.widget-top {
-	margin-bottom: 18px;
+.widget-menu-list() {
 
   ul {
     padding:0;
@@ -80,21 +18,20 @@ WP-Bootstrap - Widgets
     list-style:none;
     position:relative;
     border:none;
-    padding: 0;
     margin: 0;
 
     a {
       padding : 10px;
+      padding-right:30px;
       border-bottom:1px solid @gray-lighter;
-      height: 60px;
-      line-height: 40px;
       width:100%;
       display:inline-block;
       color:@gray-dark;
       font-weight: bold;
+      
     }
   }
-  li:after {
+  li a:after {
     content: "\f105";
     font-family: FontAwesome;
     float:right;
@@ -103,88 +40,216 @@ WP-Bootstrap - Widgets
     top: 20%;
     vertical-align:middle;
     font-size:20px;
+    color:@gray;
+  }
+}
+
+
+//トップページのウィジェット
+.widget-top {
+	margin-bottom: 18px;
+  .widget-menu-list();
+
+}
+
+.widget-header {
+  padding:0 0 0 0;
+  @media (max-width: @screen-sm-min) {
+    .menu {
+      margin:0 -15px;
+      padding:0;
+    }
+    .menu-item {
+      list-style:none;
+      position:relative;
+      border:none;
+      padding: 0 10px;
+      margin: 0;
+      border-bottom:1px solid @navbar-default-border;
+
+      a {
+        padding : 10px;
+        width:100%;
+        display:inline-block;
+        color:@gray-dark;
+        font-weight: bold;
+      }
+    }
+    .menu-item:after {
+      content: "\f105";
+      font-family: FontAwesome;
+      float:right;
+      position: absolute;
+      right: 10px;
+      top: 20%;
+      vertical-align:middle;
+      font-size:20px;
+      color:@gray;
+    }
+  }
+  @media (min-width: @screen-sm-min) {
+    .menu {
+      float:left;
+      padding-top:10px;
+    }
+    .menu-item {
+      margin: 0 10px;
+      list-style:none;
+      float:left;
+      border:0;
+      font-size:16px;
+      a {
+        padding : 10px;
+        width:100%;
+        display:inline-block;
+        color:@gray-dark;
+        font-weight: bold;
+      }
+    }
+    &.widget_search {
+      float:right;
+      padding-top:5px;
+    }
   }
 
+}
+
+//サイドバーウィジェット
+.widget-sidebar {
+  margin-bottom: 20px;
+
+  .widget-menu-list();
+
+  @media (min-width: @screen-sm-min) {
+    .menu {
+      margin: 0 15px;
+    }
+
+    form {
+      margin: 0 15px;
+    }
+  }
+
+
   .widget-title { 
-    font-size: 20px;
-    padding : 10px 10px 5px 10px;
-    #gradient > .vertical(lighten(@headline-bg,5%), darken(@headline-bg,10%));
+    color: @gray-dark;
+    font-size: 16px;
+    font-weight: normal;
+    padding : 10px 10px 8px 10px;
+    margin : 10px -10px 10px -10px;
+
+    @media (min-width: @screen-sm-min) {
+      margin: 20px 0;
+    }
+    background: @headline-bg;
+    #gradient > .vertical(lighten(@headline-bg,10%), lighten(@headline-bg,5%));
+    border-radius: 4px;
+    vertical-align:bottom;
+    small {
+      color : @gray-lighter;
+    }
+  }
+}
+
+
+//フッターウィジェット
+.widget-footer {
+  margin-bottom: 20px;
+
+  .widget-menu-list();
+  .widget-title {
+    color: @gray-dark;
+    font-size: 14px;
   }
 }
 
 
 
 
+.widget-post-bottom {
+  .widget-title {
+    color: @gray-dark;
+    font-size: 14px;
+  }
+}
 
 #tag-cloud{
-	margin-bottom: 18px;
-	line-height: 160%;
+  margin-bottom: 18px;
+  line-height: 160%;
 }
 
 .tags{
-	a{
-		.label;
-		.label-default;
-	}
+  a{
+    .label;
+    .label-default;
+  }
 }
 
 /* override standard link hover for the tag cloud widget */
 #tag-cloud a:hover,
 .tags a:hover{
-	color: #ffffff;
-	text-decoration: none;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 #tag-cloud a{
-	white-space: pre;
-	text-transform: uppercase;
+  white-space: pre;
+  text-transform: uppercase;
 }
 
 /* change default form padding for search */
 
 .widget_search{
-	form{
-		padding-left: 0;
-	}
+  form{
+    padding-left: 0;
+  }
 
-	.input-group > input{
-		//.form-control;
-	}
+  .input-group > input{
+    //.form-control;
+  }
+}
+
+
+.widget_ad_text {
+  .widget-title {
+    font-size:10px;
+    color:@gray;
+  }
 }
 
 /* calendar widget */
 
 #calendar_wrap{
-	border: 1px solid #ddd;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	padding: 5px;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  padding: 5px;
 }
 
 #wp-calendar{
-	width: 100%;
+  width: 100%;
 }
 
 #wp-calendar caption{
-	font-weight: bold;
-	padding: 8px;
+  font-weight: bold;
+  padding: 8px;
 }
 
 #wp-calendar tr{
-	border-top: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
 #wp-calendar tr:last-child{
-	border-bottom: none;
+  border-bottom: none;
 }
 
 #wp-calendar td{
-	text-align: center;
-	padding: 8px 0;
+  text-align: center;
+  padding: 8px 0;
 }
 
 blockquote.pull-left{
-	padding-right: 15px;
+  padding-right: 15px;
 }

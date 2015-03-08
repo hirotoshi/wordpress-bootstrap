@@ -58,9 +58,6 @@ body{
 
 }
 
-.more-link{
-	white-space: nowrap;
-}
 
 
 .footer-links{
@@ -100,10 +97,28 @@ body{
 
 
 .nav-more {
-  text-align:right;
+  text-align:center;
 
   a:after {
-    content: "\f105";
+    content: " \f105";
     font-family: FontAwesome;
+  }
+}
+
+
+.headline { 
+  color: @headline-color;
+  font-size: 20px;
+  font-weight: normal;
+  padding : 10px 10px 5px 10px;
+  margin : 10px 0 10px -10px;
+  background: @headline-bg;
+  #gradient > .vertical(lighten(@headline-bg,5%), darken(@headline-bg,10%));
+  border-bottom: 2px solid darken(@headline-bg,10%);
+  border-radius: 4px;
+  text-shadow : 1px 2px 2px #000;
+  vertical-align:bottom;
+  small {
+    color : @gray-lighter;
   }
 }
