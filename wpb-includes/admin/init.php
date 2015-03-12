@@ -17,50 +17,32 @@ function initial_setting_menu() {
 
 
 function register_xeory_setting() {
-  register_setting( 'xeory-initialize-group', 'blogname' );
-  register_setting( 'xeory-initialize-group', 'blogdescription' );
-  register_setting( 'xeory-initialize-group', 'meta_keywords' );
-  register_setting( 'xeory-initialize-group', 'banner_url' );
-  register_setting( 'xeory-initialize-group', 'banner_image' );
-  register_setting( 'xeory-initialize-group', 'blog_public' );
-  register_setting( 'xeory-initialize-group', 'permalink_structure' );
+  register_setting( 'wpb-initialize-group', 'blogname' );
+  register_setting( 'wpb-initialize-group', 'blogdescription' );
+  register_setting( 'wpb-initialize-group', 'meta_keywords' );
+  register_setting( 'wpb-initialize-group', 'banner_url' );
+  register_setting( 'wpb-initialize-group', 'banner_image' );
+  register_setting( 'wpb-initialize-group', 'blog_public' );
+  register_setting( 'wpb-initialize-group', 'permalink_structure' );
 
-  //配色
-  register_setting( 'xeory-initialize-group', 'color_scheme');
 
-  //トップページのロゴ設定
-  register_setting( 'xeory-initialize-group', 'toppage_logo_type' );
-  register_setting( 'xeory-initialize-group', 'logo_text' );
-  register_setting( 'xeory-initialize-group', 'logo_image' );
 
   //トップページのメタタグの設定
   //コアから取得
 
   //Googleツールの設定
-  register_setting( 'xeory-initialize-group', 'analytics_tracking_code' );
-  register_setting( 'xeory-initialize-group', 'webmaster_tool' );
-  register_setting( 'xeory-initialize-group', 'google_publisher' );
+  register_setting( 'wpb-initialize-group', 'analytics_tracking_id' );
+  register_setting( 'wpb-initialize-group', 'google_publisher' );
 
   //Facebookとの連携
-  register_setting( 'xeory-initialize-group', 'facebook_user_id' );
-  register_setting( 'xeory-initialize-group', 'facebook_app_id' );
-  register_setting( 'xeory-initialize-group', 'facebook_page_url' );
+  register_setting( 'wpb-initialize-group', 'facebook_user_id' );
+  register_setting( 'wpb-initialize-group', 'facebook_app_id' );
+  register_setting( 'wpb-initialize-group', 'facebook_page_url' );
+  register_setting( 'wpb-initialize-group', 'wpb_ogp_image' );
 
   //その他の設定
-  register_setting( 'xeory-initialize-group', 'def_image' );
-  register_setting( 'xeory-initialize-group', 'post_layout' );
-  register_setting( 'xeory-initialize-group', 'social_buttons' );
-  
-  register_setting( 'xeory-initialize-group', 'twitter_id' );
+  register_setting( 'wpb-initialize-group', 'twitter_id' );
 
-  //register_setting( 'xeory-initialize-group', 'likebox_position' );
-  //register_setting( 'xeory-initialize-group', 'google_plus_publisher' );
-  //register_setting( 'xeory-initialize-group', 'google_plus_author_link' );
-
-//  register_setting( 'xeory-initialize-group', 'use_facebook' );
-//  register_setting( 'xeory-initialize-group', 'use_feedly' );
-//  register_setting( 'xeory-initialize-group', 'use_twitter_id' );
-//  register_setting( 'xeory-initialize-group', 'use_xeory_footer' );
   //.htaccessを更新させる必要がある
   flush_rewrite_rules( true );
 }
@@ -95,40 +77,9 @@ jQuery('document').ready(function(){
     <form method="post" action="options.php" enctype="multipart/form-data" encoding="multipart/form-data">
       <?php
         
-        settings_fields( 'xeory-initialize-group' );
-        do_settings_sections( 'xeory-initialize-group' );
+        settings_fields( 'wpb-initialize-group' );
+        do_settings_sections( 'wpb-initialize-group' );
       ?>
-
-<div class="metabox-holder">
-<div id="toppage_logo_setting" class="postbox " >
-<h3 class='hndle'><span>トップページのロゴ設定</span></h3>
-  <div class="inside">
-    <div class="main">
-      <p class="setting_description">ここではサイトトップページの左上に表示するロゴの設定をします。</p>
-      <h4>ロゴタイプの選択</h4>
-      <?php
-        $toppage_logo_type = trim(get_option('toppage_logo_type'));
-        if(isset($toppage_logo_type) && $toppage_logo_type !== ''){
-          $toppage_logo_type = trim(get_option('toppage_logo_type'));
-        }else{
-          $toppage_logo_type = 'logo_text';
-        }
-      ?>
-      <label><input type="radio" name="toppage_logo_type" value="logo_text" <?php checked($toppage_logo_type, 'logo_text'); ?> 
-      checked ><strong>テキストロゴ</strong></label>
-      <p class="setting_description"><small>テキストのロゴを表示します。ロゴに表示したいテキストを下に入力してください。</small></p>
-      <p><input type="text" id="logo_text" name="logo_text" class="regular-text" value="<?php echo get_option('logo_text');?>" /></p>
-
-
-      <label><input type="radio" name="toppage_logo_type" value="logo_image"<?php checked($toppage_logo_type, 'logo_image'); ?> ><strong>画像ロゴ</strong></label>
-      <p class="setting_description"><small>ロゴを画像にします。下の「画像をアップロード」ボタンを押して任意の画像を選択してください。このテンプレートでは、300px x 60pxの画像が最も適しています。</small></p>
-      <p><input type="text" id="logo_image" name="logo_image" class="regular-text" value="<?php echo get_option('logo_image');?>" /><a class="media-upload" href="JavaScript:void(0);" rel="logo_image"><input class="cmb_upload_button button" type="button" value="画像をアップロードする" /></a>
-      </p>
-
-    </div>
-  </div>
-</div>
-</div>
 
 <div class="metabox-holder">
 <div id="toppage_meta_setting" class="postbox " >
@@ -142,7 +93,7 @@ jQuery('document').ready(function(){
       <p class="setting_description"><small>トップページのタイトルを入力して下さい。ここに入力した内容が検索エンジンにも表示されるようになります。<br>効果的なタイトルのつけ方を知りたい方は、『<a href="http://bazubu.com/what-is-best-for-wp-title-22931.html" target="_blank">WordPressのタイトルの付け方</a>』をご覧ください。</small></p>
 
       <h4>トップページの説明（メタディスクリプション）</h4>
-      <textarea id="blogdescription" class="regular-text" name="blogdescription" rows="5" cols="60"><?php echo get_option('blogdescription'); ?></textarea>
+      <textarea id="blogdescription" class="regular-text" name="blogdescription" rows="3" cols="60"><?php echo get_option('blogdescription'); ?></textarea>
       <p class="setting_description"><small>トップページの説明文を全角８０文字以内で入力してください。ここに入力した内容が検索エンジンのディスクリプション欄に表示されるようになります。具体的には、『<a href="" target="_blank">メタディスクリプションとは</a>をご覧ください。』</small></p>
       
       <h4>メタキーワード</h4>
@@ -162,12 +113,9 @@ jQuery('document').ready(function(){
       <p class="setting_description">Googleアナリティクス・Googleウェブマスターツールの設定を行います。サイトの効果計測やメンテナンスに必要なので必ず設定しましょう。設定の前に、それぞれのアカウントを取得しておきましょう。</p>
 
       <h4>Googleアナリティクスの設定</h4>
-      <textarea name="analytics_tracking_code" rows="10" cols="60" id="analytics_tracking_code" class="cmb_textarea_code"><?php echo get_option('analytics_tracking_code'); ?></textarea>
-      <p class="setting_description"><small>Googleアナリティクスのコードを入力して下さい。</small></p>
+      <input type="text" name="analytics_tracking_id" id="analytics_tracking_id" class="cmb_textarea_code" value="<?php echo get_option('analytics_tracking_id'); ?>" placeholder="UA-00000000-0" />
+      <p class="setting_description"><small>GoogleアナリティクスのトラッキングIDを入力して下さい。</small></p>
 
-      <h4>Googleウェブマスターツールの設定</h4>
-      <textarea name="webmaster_tool" rows="10" cols="60" id="webmaster_tool" class="cmb_textarea_code"><?php echo get_option('webmaster_tool'); ?></textarea>
-      <p class="setting_description"><small>Googleウェブマスターツールのコードを入力してください。</small></p>
     </div>
   </div>
 </div>
@@ -178,8 +126,6 @@ jQuery('document').ready(function(){
 <h3 class='hndle'><span>Facebookとの連携</span></h3>
   <div class="inside">
     <div class="main">
-      <p class="setting_description">Facebookとの連携を行います。これらを入力していなければ、LikeBOXの表示ができなかったり、シェアされた際の拡散効率が落ちてしまいますので、しっかりと設定しておきましょう。<br>
-      （※ 詳しくは<a href="https://xeory.jp/xeory-1st-settings" target="_blank">Xeoryインストール後の初期設定</a>の「３．ソーシャルメディアのリンク設定」と「４．OGPの設定」をご確認ください）</p>
       <h4>FacebookユーザーIDの入力</h4>
       <input type="text" id="facebook_user_id" class="regular-text" name="facebook_user_id" value="<?php echo get_option('facebook_user_id'); ?>">
       <p class="setting_description"><small>FacebookのユーザーIDを入力してください。</small></p>
@@ -191,8 +137,9 @@ jQuery('document').ready(function(){
       <h4>Facebookページurl</h4>
       <input type="text" id="facebook_page_url" class="regular-text" name="facebook_page_url" value="<?php echo get_option('facebook_page_url'); ?>">
 
+
       <h4>デフォルト画像の設定</h4>
-      <input type="text" id="def_image" name="def_image" class="regular-text" value="<?php echo get_option('def_image');?>" /><a class="media-upload" href="JavaScript:void(0);" rel="def_image"><input class="cmb_upload_button button" type="button" value="画像をアップロードする" /></a>
+      <input type="text" id="wpb_ogp_image" name="wpb_ogp_image" class="regular-text" value="<?php echo get_option('wpb_ogp_image');?>" /><a class="media-upload" href="JavaScript:void(0);" rel="wpb_ogp_image"><input class="cmb_upload_button button" type="button" value="画像をアップロードする" /></a>
       <p class="setting_description"><small>サイトがシェアされた時に表示させたい画像を選択してアップロードボタンを押してください。サイトのトップページや、その他アイキャッチ画像が設定されていないページがシェアされた時には、ここのアップロードした画像が、Facebook上で表示されるようになります。画像のサイズは、1200 px x 630 pxが最も綺麗に表示されます。</small></p>
 
     </div>
@@ -237,96 +184,6 @@ jQuery('document').ready(function(){
 <h3 class='hndle'><span>その他の設定</span></h3>
   <div class="inside">
     <div class="main">
-
-     <?php
-        $colors = array(
-          0 => 'default',
-          1 => 'color01',
-          2 => 'color02',
-          3 => 'color03',
-          4 => 'color04',
-        );
-
-        $color_scheme = trim(get_option('color_scheme'));
-        if(isset($color_scheme) && $color_scheme !== ''){
-          $color_scheme = trim(get_option('color_scheme'));
-        }else{
-          $color_scheme = 'default';
-        }
-
-      $active_template_name = basename(get_stylesheet_directory());
-
-
-    ?>
-    <h4>カラー設定</h4>
-    <p class="setting_description"><small>ベースとなる配色を選択して下さい。</small></p>
-    <ul class="color-radio cmb_id_bzb_color_scheme">
-    <li id="color-1" style="display:inline-block;padding-right:18px;">
-    <input type="radio" name="color_scheme" id="color_scheme1" value="default" <?php checked($color_scheme, 'default');?> /> 
-    <label for="color_scheme1">デフォルト</label>
-    </li>
-    <li id="color-2" style="display:inline-block;padding-right:18px;">
-    <input type="radio" name="color_scheme" id="color_scheme2" value="color01" <?php checked($color_scheme, $colors[1]);?> /> 
-    <label for="color_scheme2">水色</label>
-    </li>
-    <li id="color-3" style="display:inline-block;padding-right:18px;">
-    <input type="radio" name="color_scheme" id="color_scheme3" value="color02" <?php checked($color_scheme, $colors[2]);?> /> 
-    <label for="color_scheme3">青</label>
-    </li>
-    <li id="color-4" style="display:inline-block;padding-right:18px;">
-    <input type="radio" name="color_scheme" id="color_scheme4" value="color03" <?php checked($color_scheme, $colors[3]);?> /> 
-    <label for="color_scheme4">紺</label>
-    </li>
-    <li id="color-5" style="display:inline-block;padding-right:18px;">
-    <input type="radio" name="color_scheme" id="color_scheme5" value="color04" <?php echo ($color_scheme == $colors[4]) ? 'checked' : '';?> /> 
-    <label for="color_scheme5">赤</label>
-    </li>
-
-    </ul>
-
-
-    <?php
-
-        $social_buttons = trim(get_option('social_buttons'));
-        if(isset($social_buttons) && $social_buttons !== ''){
-          $social_buttons = trim(get_option('social_buttons'));
-        }else{
-          $social_buttons = '';
-        }
-      ?>
-
-    <h4>ソーシャルボタン設定</h4>
-    <label for="social_buttons"><input name="social_buttons" type="checkbox" id="social_buttons" value="none" <?php checked(get_option('social_buttons'), 'none');?> />使用しない場合はチェックを入れてください。</label>
-
-   
-
-      <?php
-        $post_layout = esc_html(get_option('post_layout'));
-        $layouts = array(
-          0 => 'left-content',
-          1 => 'right-content',
-          2 => 'one-column',
-        );
-      ?>
- 
-    <h4>レイアウト設定</h4>
-    <p class="setting_description"><small>基本のレイアウトを選択して下さい。</small></p>
-
-
-    <ul class="layout-radio cmb_id_bzb_post_layout">
-    <li id="layout-1" style="display:inline-block;padding-right:18px;">
-    <input type="radio" name="post_layout" id="post_layout1" value="left-content" <?php echo ($post_layout == $layouts[0]) ? 'checked' : '';?> /> 
-    <label for="post_layout1">left-content</label>
-    </li>
-    <li id="layout-2" style="display:inline-block;padding-right:18px;">
-    <input type="radio" name="post_layout" id="post_layout2" value="right-content" <?php echo ($post_layout == $layouts[1]) ? 'checked' : '';?> /> 
-    <label for="post_layout2">right-content</label>
-    </li>
-    <li id="layout-3" style="display:inline-block;padding-right:18px;">
-    <input type="radio" name="post_layout" id="post_layout3" value="one-column" <?php echo ($post_layout == $layouts[2]) ? 'checked' : '';?> /> 
-    <label for="post_layout3">one-column</label>
-    </li>
-    </ul>
 
 
 <h4>検索エンジンでの表示</h4>

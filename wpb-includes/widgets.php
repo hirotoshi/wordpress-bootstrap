@@ -4,6 +4,7 @@
 require_once('widgets/recentposts.php');
 require_once('widgets/populars.php');
 require_once('widgets/ad.php');
+require_once('widgets/profile.php');
 //require_once('widgets/menu.php');
 
 /************* ACTIVE SIDEBARS ********************/

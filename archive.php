@@ -2,7 +2,7 @@
 			
 			<div id="content" class="clearfix row">
 			
-				<div id="main" class="col-sm-8 clearfix" role="main">
+				<div id="main" class="col-md-8 clearfix" role="main">
 					<?php get_template_part('breadcrumbs'); ?>
 				
 					<div class="page-header">

@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <div id="content" class="clearfix row">
-	<div id="main" class="col-sm-8 clearfix" role="main">
+	<div id="main" class="col-md-8 clearfix" role="main">
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 			<div class="post-inner">
@@ -34,8 +34,10 @@
 <?php the_tags('<p class="tags"><span class="label label-default"><i class="fa fa-tag"></i>', 
 '</span>&nbsp;<span class="label label-default"><i class="fa fa-tag"></i>', '</span></p>'); ?>
                 <?php endif ?>
+                    <?php dynamic_sidebar( 'post-bottom' ); ?>
                     <hr />
                     <?php get_template_part('sns'); ?>
+                    <hr />
 
                         <h4 class="widget-title">関連記事</h4>
 <?php 
@@ -62,7 +64,6 @@ if (function_exists('wpp_get_mostpopular')) {
 ?>
 </div>
 
-                    <?php dynamic_sidebar( 'post-bottom' ); ?>
 				</footer> <!-- end article footer -->
 			</div>
 		</article> <!-- end article -->

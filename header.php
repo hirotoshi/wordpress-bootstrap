@@ -38,14 +38,16 @@
 			<div class="<?php echo wpb_navbar_class() ?>">
 				<div class="container">
 					<div class="navbar-header">
+						<?php if (is_active_sidebar('header')) :?>
 						<button type="button" class="navbar-toggle btn btn-default" data-toggle="collapse" data-target=".navbar-responsive-collapse">
                             <i class="fa fa-bars"></i>
 						</button>
+						<?php endif ?>
 						<a class="navbar-brand" title="<?php echo get_bloginfo('description'); ?>" href="<?php echo home_url(); ?>">
 							<?php if (get_header_image()) :?>
 							<img class="img-responsive"  src="<?php header_image(); ?>" />
 							<?php else : ?>
-							<?php bloginfo('name'); ?>
+							<span class="blog-title"><?php bloginfo('name'); ?></span>
 							<?php endif ?>
 
 						</a>

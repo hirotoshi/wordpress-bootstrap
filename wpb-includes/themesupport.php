@@ -8,8 +8,10 @@ if( !function_exists( "wp_bootstrap_theme_support" ) ) {
     add_image_size('thumb80',80,80,true);
     add_image_size('thumb100',100,100,true);
     add_image_size('thumb150',150,150,true);
+
     add_theme_support( 'custom-background' );  // wp custom background
     add_theme_support( 'automatic-feed-links' ); // rss
+
 
     // Add post format support - if these are not needed, comment them out
     add_theme_support( 'post-formats',      // post formats

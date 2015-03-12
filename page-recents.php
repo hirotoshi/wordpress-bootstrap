@@ -6,7 +6,7 @@ query_posts('posts_per_page=10&paged='.$paged);
 
 <div id="content" class="clearfix row">
 
-	<div id="main" class="col-sm-8 clearfix" role="main">
+	<div id="main" class="col-md-8 clearfix" role="main">
 	
 		<div class="media-list">
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>

@@ -4,8 +4,8 @@ WP-Bootstrap - Widgets
 
 */
 
-.widget-menu-list() {
-
+//ウィジェット内のulリスト
+.widget-list() {
   ul {
     padding:0;
     border-radius:5px;
@@ -45,13 +45,26 @@ WP-Bootstrap - Widgets
 }
 
 
-//トップページのウィジェット
-.widget-top {
-	margin-bottom: 18px;
-  .widget-menu-list();
+//ウィジェット内のメニュー
+.widget-menu-list() {
+  .menu-item-has-children {
+    >a {
+      background-color:lighten( @headline-bg,5%);
+      color: white;
+    }
+    >a:after {
+      content: none;
+    }
+    .sub-menu {
+      border-radius:0;  
+    }
 
+  }
 }
 
+
+
+//ヘッダーのウィジェット
 .widget-header {
   padding:0 0 0 0;
   @media (max-width: @screen-sm-min) {
@@ -86,6 +99,9 @@ WP-Bootstrap - Widgets
       font-size:20px;
       color:@gray;
     }
+    &.widget_search {
+      padding: 10px 0;
+    }
   }
   @media (min-width: @screen-sm-min) {
     .menu {
@@ -108,9 +124,18 @@ WP-Bootstrap - Widgets
     }
     &.widget_search {
       float:right;
-      padding-top:5px;
+      padding-top:15px;
     }
   }
+
+}
+
+
+//トップページのウィジェット
+.widget-top {
+  margin-bottom: 18px;
+  .widget-list();
+  .widget-menu-list();
 
 }
 
@@ -118,7 +143,9 @@ WP-Bootstrap - Widgets
 .widget-sidebar {
   margin-bottom: 20px;
 
+  .widget-list();
   .widget-menu-list();
+  
 
   @media (min-width: @screen-sm-min) {
     .menu {
@@ -132,22 +159,8 @@ WP-Bootstrap - Widgets
 
 
   .widget-title { 
-    color: @gray-dark;
-    font-size: 16px;
-    font-weight: normal;
-    padding : 10px 10px 8px 10px;
-    margin : 10px -10px 10px -10px;
+    .headline-v2();
 
-    @media (min-width: @screen-sm-min) {
-      margin: 20px 0;
-    }
-    background: @headline-bg;
-    #gradient > .vertical(lighten(@headline-bg,10%), lighten(@headline-bg,5%));
-    border-radius: 4px;
-    vertical-align:bottom;
-    small {
-      color : @gray-lighter;
-    }
   }
 }
 
@@ -156,7 +169,7 @@ WP-Bootstrap - Widgets
 .widget-footer {
   margin-bottom: 20px;
 
-  .widget-menu-list();
+  .widget-list();
   .widget-title {
     color: @gray-dark;
     font-size: 14px;
@@ -165,7 +178,7 @@ WP-Bootstrap - Widgets
 
 
 
-
+//記事下のウィジェット
 .widget-post-bottom {
   .widget-title {
     color: @gray-dark;
@@ -213,7 +226,11 @@ WP-Bootstrap - Widgets
 .widget_ad_text {
   .widget-title {
     font-size:10px;
-    color:@gray;
+    background: transparent;
+    color:@gray !important;
+    margin : 0 0 2px 0;
+    padding : 0;
+
   }
 }
 

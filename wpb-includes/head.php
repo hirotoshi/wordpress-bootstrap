@@ -1,4 +1,5 @@
 <?php
+
 // Clean up the WordPress Head
 if( !function_exists( "wp_bootstrap_head_cleanup" ) ) {  
   function wp_bootstrap_head_cleanup() {
@@ -16,3 +17,10 @@ if( !function_exists( "wp_bootstrap_head_cleanup" ) ) {
 }
 // Launch operation cleanup
 add_action( 'init', 'wp_bootstrap_head_cleanup' );
+
+
+// remove WP version from RSS
+if( !function_exists( "wp_bootstrap_rss_version" ) ) {  
+  function wp_bootstrap_rss_version() { return ''; }
+}
+add_filter( 'the_generator', 'wp_bootstrap_rss_version' );

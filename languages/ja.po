@@ -95,13 +95,13 @@ msgstr "Tags"
 #: page-homepage.php:126 page-left-sidebar.php:46 page.php:38 search.php:54
 #: single.php:51
 msgid "Not Found"
-msgstr "Not Found"
+msgstr "みつかりませんでした"
 
 #: attachment.php:44 image.php:70 index.php:72 page-full-width.php:47
 #: page-homepage.php:129 page-left-sidebar.php:49 page.php:41 search.php:57
 #: single.php:54
 msgid "Sorry, but the requested resource was not found on this site."
-msgstr "Sorry, but the requested resource was not found on this site."
+msgstr "大変申し訳ございません。お探しの情報は見つかりませんでした。"
 
 #: comments.php:11
 msgid "This post is password protected. Enter the password to view comments."
