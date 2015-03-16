@@ -8,7 +8,7 @@ if( !function_exists("wp_bootstrap_theme_styles") ) {
         //wp_enqueue_style( 'wpbs' );
 
         // For child themes
-        wp_register_style( 'wpbs-style', get_stylesheet_directory_uri() . '/style.css', array(), '1.0', 'all' );
+        wp_register_style( 'wpbs-style', get_stylesheet_directory_uri() . '/style.css', array(), '3', 'all' );
         wp_enqueue_style( 'wpbs-style' );
 
         wp_register_style( 'font-awesome', get_stylesheet_directory_uri() . '/bower_components/font-awesome/css/font-awesome.css', array(), '1.0', 'all' );

@@ -37,25 +37,6 @@ body{
   margin-top: 10px;
   margin-bottom: 10px;
   border : none;
-  /*
-  h1 {
-    font-size: 26px;
-    font-weight: bold;
-    line-height: 30px;
-    color: #333;
-    margin-bottom: 10px;
-    a:hover {
-      text-decoration: underline;
-    }
-    a {
-      color: #333;
-      text-decoration: none;
-    }
-
-  }
-  */
-
-
 }
 
 
@@ -130,7 +111,7 @@ body{
   font-size: 16px;
   font-weight: normal;
   padding : 10px 10px 5px 10px;
-  margin : 10px 0 10px 0px;
+  margin : 10px -5px 10px -5px;
   background: lighten(@headline-bg,5%);
   border-radius: 4px;
   vertical-align:bottom;
@@ -138,3 +119,141 @@ body{
     color : @gray-lighter;
   }
 }
+
+
+.balloon {
+  position: relative;
+  color: #fff;
+  background: #777;
+  font-size: 20px;
+  line-height: 1;
+  text-shadow: 1px 1px 1px #000;
+  border :1px solid #777;
+  margin: 30px -10px 10px -10px;
+  padding: 15px 5px 12px 10px;
+  border-radius: 3px;
+}
+.balloon:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 30px;
+  height: 0;
+  width: 0;
+  border: 10px solid transparent;
+  border-top: 10px solid #777;
+}
+
+.balloon-border {
+  position: relative;
+  color: #111;
+  background: #fff;
+  font-size: 18px;
+  line-height: 1;
+  border :2px solid #555;
+  margin: 30px -10px 10px -10px;
+  padding: 15px 5px 12px 10px;
+  border-radius: 10px;
+}
+
+.balloon-border:after,.balloon-border:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  height: 0;
+  width: 0;
+}
+
+.balloon-border:after {
+  left: 33px;
+  border: 11px solid transparent;
+  border-top: 11px solid #fff;
+}
+.balloon-border:before {
+  left: 30px;
+  border: 14px solid transparent;
+  border-top: 14px solid #555;
+}
+
+
+
+
+/*******************************
+ * 左からの吹き出し
+ ********************************/
+.balloon-left {
+  position: relative;
+  background: #fff;
+  border: 2px solid #777;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  //margin-right: 20%;
+  //clear: both;
+  float: left;
+}
+.balloon-left:after,
+.balloon-left:before {
+  right: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.balloon-left:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-right-color: #fff;
+  border-width: 7px;
+  margin-top: -7px;
+}
+.balloon-left:before {
+  border-color: rgba(0, 0, 0, 0);
+  border-right-color: #000;
+  border-width: 8px;
+  margin-top: -8px;
+}
+
+/*******************************
+ * 右からの吹き出し
+ ********************************/
+.balloon-right {
+  position: relative;
+//  background: #85e249;
+  border: 2px solid #777;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  //margin-left: 20%;
+  //clear: both;
+ // max-width: 500px;
+  float: right;
+}
+.balloon-right:after,
+.balloon-right:before {
+  left: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.balloon-right:after {
+  //border-color: rgba(133, 226, 73, 0);
+  border-color: rgba(255, 255, 255, 0);
+  //border-left-color: #85e249;
+  border-left-color: #fff;
+  border-width: 7px;
+  margin-top: -7px;
+}
+.balloon-right:before {
+  border-color: rgba(119, 119, 119, 0);
+  border-left-color: #777;
+  border-width: 8px;
+  margin-top: -8px;
+}
+

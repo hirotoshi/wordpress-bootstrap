@@ -6,41 +6,47 @@ WP-Bootstrap - Widgets
 
 //ウィジェット内のulリスト
 .widget-list() {
-  ul {
-    padding:0;
-    border-radius:5px;
-    border-top:1px solid @gray-lighter;
-    border-left:1px solid @gray-lighter;
-    border-right:1px solid @gray-lighter;
-    background-color:#fff;
-  }
-  li {
-    list-style:none;
-    position:relative;
-    border:none;
-    margin: 0;
+  &.widget_nav_menu,
+  &.widget_archive,
+  &.widget_categories,
+  &.widget_rss
+  { 
+    ul {
+      padding:0;
+      border-radius:5px;
+      border-top:1px solid @gray-lighter;
+      border-left:1px solid @gray-lighter;
+      border-right:1px solid @gray-lighter;
+      background-color:#fff;
+      li {
+        list-style:none;
+        position:relative;
+        border:none;
+        margin: 0;
 
-    a {
-      padding : 10px;
-      padding-right:30px;
-      border-bottom:1px solid @gray-lighter;
-      width:100%;
-      display:inline-block;
-      color:@gray-dark;
-      font-weight: bold;
-      
+        a {
+          padding : 10px;
+          padding-right:30px;
+          border-bottom:1px solid @gray-lighter;
+          width:100%;
+          display:inline-block;
+          color:@gray-dark;
+          font-weight: bold;
+
+        }
+      }
+      li a:after {
+        content: "\f105";
+        font-family: FontAwesome;
+        float:right;
+        position: absolute;
+        right: 10px;
+        top: 20%;
+        vertical-align:middle;
+        font-size:20px;
+        color:@gray;
+      }
     }
-  }
-  li a:after {
-    content: "\f105";
-    font-family: FontAwesome;
-    float:right;
-    position: absolute;
-    right: 10px;
-    top: 20%;
-    vertical-align:middle;
-    font-size:20px;
-    color:@gray;
   }
 }
 
@@ -49,7 +55,7 @@ WP-Bootstrap - Widgets
 .widget-menu-list() {
   .menu-item-has-children {
     >a {
-      background-color:lighten( @headline-bg,5%);
+      background-color:lighten( @headline-bg,10%);
       color: white;
     }
     >a:after {
@@ -58,7 +64,13 @@ WP-Bootstrap - Widgets
     .sub-menu {
       border-radius:0;  
     }
+  }
 
+  .menu-item-has-children:first-child {
+    >a {
+      border-top-right-radius : 5px;
+      border-top-left-radius : 5px;
+    }
   }
 }
 
@@ -180,10 +192,14 @@ WP-Bootstrap - Widgets
 
 //記事下のウィジェット
 .widget-post-bottom {
+  margin-top:10px;
+
   .widget-title {
     color: @gray-dark;
     font-size: 14px;
   }
+  .widget-list();
+  .widget-menu-list();
 }
 
 #tag-cloud{

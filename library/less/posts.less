@@ -26,7 +26,7 @@ WP-Bootstrap - Post Styles
   }
 
   //記事タイトル
-  .page-header {
+  .post-header {
     .single-title {
       font-size: 26px;
       font-weight: bold;
@@ -45,13 +45,13 @@ WP-Bootstrap - Post Styles
   }
 
   //記事のメタデータ
-  .meta{
+  .post-meta{
     font-style: italic;
     color: #808080;
   }
 
   //記事の本文
-  .post_content {
+  .post-content {
 
     font-size: 17px;
     line-height: 27px;
@@ -88,8 +88,19 @@ WP-Bootstrap - Post Styles
 	.img-citation {
 		margin-top: -20px;
 		font-size: 11px;
-		color: #999;
+		color: @gray-light;
+    a,a:link {
+      color: @gray-light;
+    }
 	}
+
+  .citation {
+		font-size: 11px;
+		color: @gray-light;
+    a,a:link {
+		  color: @gray-light;
+    }
+  }
 
 	.hutoaka {
 		font-weight: bold;
@@ -134,61 +145,7 @@ WP-Bootstrap - Post Styles
 }
 
 
-div[id*='attachment_']{
-	max-width: 100%;
-	height: 100%;
-}
-
-.post .hero-unit img{
-	margin-bottom: 1em;
-}
 
 
-img.alignleft{
-	margin-right: 10px;
-	float: left;
-}
 
-img.alignright{
-	margin-left: 10px;
-	float: right;
-}
 
-img.aligncenter{
-	display: block;
-	margin: 0 auto;
-}
-
-.archive .post h3{
-	line-height: 24px;
-	margin-bottom: 10px;
-}
-
-video {
-	max-width: 100%;
-	height: auto;
-}
-
-.video-container {
-	position: relative;
-	padding-bottom: 56.25%;
-	padding-top: 30px;
-	height: 0;
-	overflow: hidden;
-}
-
-.video-container iframe,  
-.video-container object,  
-.video-container embed {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-
-.video-wrapper {
-	width: 630px;
-	max-width: 100%;
-	margin-bottom: 18px;
-}
