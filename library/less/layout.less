@@ -8,6 +8,8 @@ WP-Bootstrap - Layout
 	font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
 }
 
+@import './headline.less';
+
 /* layout */
 
 body{
@@ -88,39 +90,6 @@ body{
 }
 
 
-.headline { 
-  color: @headline-color;
-  font-size: 20px;
-  font-weight: normal;
-  padding : 10px 10px 5px 10px;
-  margin : 10px -10px 10px -10px;
-  background: @headline-bg;
-  #gradient > .vertical(lighten(@headline-bg,5%), darken(@headline-bg,10%));
-  border-bottom: 2px solid darken(@headline-bg,10%);
-  border-radius: 4px;
-  text-shadow : 1px 2px 2px #000;
-  vertical-align:bottom;
-  small {
-    color : @gray-lighter;
-  }
-}
-
-
-.headline-v2 { 
-  color: @headline-color;
-  font-size: 16px;
-  font-weight: normal;
-  padding : 10px 10px 5px 10px;
-  margin : 10px -5px 10px -5px;
-  background: lighten(@headline-bg,5%);
-  border-radius: 4px;
-  vertical-align:bottom;
-  small {
-    color : @gray-lighter;
-  }
-}
-
-
 .balloon {
   position: relative;
   color: #fff;
@@ -188,9 +157,8 @@ body{
   margin: 10px;
   padding: 10px;
   border-radius: 15px;
-  //margin-right: 20%;
-  //clear: both;
   float: left;
+  color: @gray-dark;
 }
 .balloon-left:after,
 .balloon-left:before {
@@ -211,9 +179,9 @@ body{
 }
 .balloon-left:before {
   border-color: rgba(0, 0, 0, 0);
-  border-right-color: #000;
-  border-width: 8px;
-  margin-top: -8px;
+  border-right-color: #777;
+  border-width: 9px;
+  margin-top: -9px;
 }
 
 /*******************************
@@ -221,15 +189,12 @@ body{
  ********************************/
 .balloon-right {
   position: relative;
-//  background: #85e249;
   border: 2px solid #777;
   margin: 10px;
   padding: 10px;
   border-radius: 15px;
-  //margin-left: 20%;
-  //clear: both;
- // max-width: 500px;
   float: right;
+  color: @gray-dark;
 }
 .balloon-right:after,
 .balloon-right:before {
@@ -256,4 +221,6 @@ body{
   border-width: 8px;
   margin-top: -8px;
 }
+
+
 

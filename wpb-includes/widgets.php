@@ -39,7 +39,7 @@ function wp_bootstrap_register_sidebars() {
   	'description' => 'サイドバーに表示するウィジェット',
   	'before_widget' => '<div id="%1$s" class="widget-sidebar widget %2$s">',
   	'after_widget' => '</div>',
-  	'before_title' => '<h4 class="widget-title">',
+  	'before_title' => '<h4 class="widget-title headline-sidebar">',
   	'after_title' => '</h4>',
   ));
 
@@ -50,7 +50,7 @@ function wp_bootstrap_register_sidebars() {
   	'description' => 'フッターに表示するウィジェット',
     'before_widget' => '<div id="%1$s" class="widget-footer widget col-sm-4 %2$s">',
     'after_widget' => '</div>',
-    'before_title' => '<h4 class="widget-title">',
+    'before_title' => '<h4 class="widget-title headline-footer">',
     'after_title' => '</h4>',
   ));
 
@@ -60,7 +60,7 @@ function wp_bootstrap_register_sidebars() {
   	'description' => '記事下部に表示するウィジェット',
     'before_widget' => '<div id="%1$s" class="widget-post-bottom widget  %2$s">',
     'after_widget' => '</div>',
-    'before_title' => '<h4 class="widget-title">',
+    'before_title' => '<h4 class="widget-title headline-sub">',
     'after_title' => '</h4>',
   ));
     

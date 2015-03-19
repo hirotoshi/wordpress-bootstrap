@@ -18,7 +18,9 @@
 						&nbsp;
 						<?php if ($mtime = get_the_time('Y/m/d')) : ?>
 						<i class="fa fa-repeat"></i>&nbsp;
-						<?php echo $mtime; ?>
+						<time class="updated">
+							<?php echo $mtime; ?>
+						</time>
 						<?php endif ?>
 					</span> 
 					</p>

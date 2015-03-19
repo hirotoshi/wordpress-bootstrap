@@ -18,7 +18,9 @@
 						&nbsp;
 						<?php if ($mtime = get_the_time('Y/m/d')) : ?>
 						<i class="fa fa-repeat"></i>&nbsp;
-						<?php echo $mtime; ?>
+						<time class="updated">
+							<?php echo $mtime; ?>
+						</time>
 						<?php endif ?>
 					</span> 
 					</p>
@@ -28,46 +30,30 @@
 					<?php wp_link_pages(); ?>
 				</section> <!-- end article section -->
 				<footer>
-					<?php dynamic_sidebar( 'post-bottom' ); ?>
-					<div class="widget widget-post-bottom">
-						<?php if ( get_the_tags() ) :?>
-						<h4 class="widget-title">関連キーワード</h4>
-						<?php the_tags('<p class="tags"><span class="label label-default"><i class="fa fa-tag"></i>', 
-						'</span>&nbsp;<span class="label label-default"><i class="fa fa-tag"></i>', '</span></p>'); ?>
-					<?php endif ?>
+					<p class="hidden author"><?php the_author(); ?></p>
 					<hr />
 					<?php get_template_part('sns'); ?>
 					<hr />
 
-					<h4 class="widget-title">関連記事</h4>
-					<?php 
-				 if (function_exists('wpp_get_mostpopular')) {
-				 $cats = array();
-				 $categories = get_the_category(); 
-				 foreach ( $categories as $cat ) {
-				 $cats[] = $cat->term_id;
-				 }
-				 $args = array(
-				 'pid' => get_the_ID(),
-				 'cat' => implode(',',$cats),
-				 'range' => 'daily',
-				 'title_length' => 30,
-				 'limit' => 4,
-				 'post_type' => 'post',
-				 'order_by' => 'views',
-				 'stats_comments' => 0,
-				 'stats_views' => 0,
-				 'thumbnail_selection' => 'usergenerated',
-				 );
-				 wpp_get_mostpopular($args);
-				 }
-				 ?>
+					<?php if ( is_active_sidebar('post-bottom') ): ?>
+					<?php dynamic_sidebar( 'post-bottom' ); ?>
+					<?php endif ?>
+
+					<h4 class="widget-title headline-sub">関連記事</h4>
+					<?php get_template_part('relative-posts'); ?>
+
+					<?php if ( get_the_tags() ) :?>
+					<hr />
+					<div class="widget widget-post-bottom">
+						<h4 class="widget-title">関連キーワード</h4>
+						<?php the_tags('<p class="tags"><span class="label label-default"><i class="fa fa-tag"></i>', 
+						'</span>&nbsp;<span class="label label-default"><i class="fa fa-tag"></i>', '</span></p>'); ?>
 					</div>
+					<?php endif ?>
 
 				</footer> <!-- end article footer -->
 			</div>
 		</article> <!-- end article -->
-		<hr />
 		<?php comments_template('',true); ?>
 		<?php endwhile; ?>			
 		<?php else : ?>

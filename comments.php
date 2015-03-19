@@ -16,6 +16,7 @@ The comments page for Bones
 
 <!-- You can start editing here. -->
 
+<hr />
 <?php if ( have_comments() ) : ?>
 	<?php if ( ! empty($comments_by_type['comment']) ) : ?>
     <h3 id="comments">&#8220;<?php the_title(); ?>&#8221;へのコメント</h3>

@@ -1,0 +1,56 @@
+
+//メインの見出し
+.headline { 
+  color: @headline-color;
+  font-size: 20px;
+  font-weight: normal;
+  padding : 10px 10px 10px 10px;
+  margin : 10px -10px 10px -10px;
+  background: @headline-bg;
+  #gradient > .vertical(lighten(@headline-bg,5%), @headline-bg);
+  //border-bottom: 2px solid @headline-bg;
+  border-radius: 4px;
+  text-shadow : 1px 2px 2px #000;
+  vertical-align:bottom;
+  small {
+    color : lighten( @headline-color, 5% );
+  }
+}
+
+//サブコンテンツの見出し
+.headline-sub { 
+  color: @headline-sub-color;
+  font-size: 16px;
+  font-weight: normal;
+  padding : 10px 10px 10px 10px;
+  margin : 10px -10px 10px -10px;
+  background: @headline-sub-bg;
+  border-radius: 4px;
+  vertical-align:bottom;
+}
+
+//サイドバーの見出し
+.headline-sidebar { 
+  color: @headline-sidebar-color;
+  font-size: 16px;
+  font-weight: normal;
+  padding : 10px 10px 10px 10px;
+  margin : 10px -10px 10px -10px;
+  background: @headline-sidebar-bg;
+  border-radius: 4px;
+  vertical-align:bottom;
+}
+
+//フッターの見出し
+.headline-footer { 
+  color: @headline-footer-color;
+  font-size: 14px;
+  font-weight: normal;
+  padding : 10px 10px 10px 10px;
+  margin : 10px -10px 10px -10px;
+  background: @headline-footer-bg;
+  border-radius: 4px;
+  vertical-align:bottom;
+}
+
+

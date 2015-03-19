@@ -20,8 +20,8 @@ function register_xeory_setting() {
   register_setting( 'wpb-initialize-group', 'blogname' );
   register_setting( 'wpb-initialize-group', 'blogdescription' );
   register_setting( 'wpb-initialize-group', 'meta_keywords' );
-  register_setting( 'wpb-initialize-group', 'banner_url' );
-  register_setting( 'wpb-initialize-group', 'banner_image' );
+  register_setting( 'wpb-initialize-group', 'wpb_no_image' );
+  register_setting( 'wpb-initialize-group', 'wpb_navigator_image' );
   register_setting( 'wpb-initialize-group', 'blog_public' );
   register_setting( 'wpb-initialize-group', 'permalink_structure' );
 
@@ -60,6 +60,7 @@ jQuery('document').ready(function(){
                 html = '<a>' + html + '</a>';
                 imgurl = jQuery('img', html).attr('src');
                 jQuery('#'+rel).val(imgurl);
+								jQuery('#'+rel+'-img').attr('src',imgurl);
                 tb_remove();
             }   
             formfield = jQuery('#'+rel).attr('name');
@@ -104,6 +105,36 @@ jQuery('document').ready(function(){
   </div>
 </div>
 </div>
+
+<div class="metabox-holder">
+<div id="site-layout" class="postbox " >
+	<h3 class='hndle'><span>サイトデザインの設定</span></h3>
+	<div class="inside">
+		<div class="main">
+			<button>
+			<a class="btn btn-default" href="/wp-admin/customize.php?return=%2Fwp-admin%2Fadmin.php%3Fpage%3Dinitial_setting_menu%26settings-updated%3Dtrue&autofocus[control]=header_image">
+				ヘッダー画像の設定
+			</a>
+			</button>
+			<h4>noimage画像の設定</h4>
+			<img id="wpb_no_image-img" src="<?php echo get_option('wpb_no_image') ?>" style="width:120px;border:1px solid;" />
+			<div>
+				<input type="text" id="wpb_no_image" name="wpb_no_image" class="regular-text" value="<?php echo get_option('wpb_no_image');?>" /><a class="media-upload" href="JavaScript:void(0);" rel="wpb_no_image"><input class="cmb_upload_button button" type="button" value="画像をアップロードする" /></a>
+			</div>
+
+			<h4>ナビゲーター画像の設定</h4>
+			<img id="wpb_navigator_image-img" src="<?php echo get_option('wpb_navigator_image') ?>" style="width:120px;border:1px solid;" />
+			<div>
+				<input type="text" id="wpb_navigator_image" name="wpb_navigator_image" class="regular-text" value="<?php echo get_option('wpb_navigator_image');?>" /><a class="media-upload" href="JavaScript:void(0);" rel="wpb_navigator_image"><input class="cmb_upload_button button" type="button" value="画像をアップロードする" /></a>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+</div>
+
+
 
 <div class="metabox-holder">
 <div id="google_tools" class="postbox " >

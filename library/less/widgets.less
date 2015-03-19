@@ -9,6 +9,7 @@ WP-Bootstrap - Widgets
   &.widget_nav_menu,
   &.widget_archive,
   &.widget_categories,
+  &.widget_recent_entries,
   &.widget_rss
   { 
     ul {
@@ -53,25 +54,27 @@ WP-Bootstrap - Widgets
 
 //ウィジェット内のメニュー
 .widget-menu-list() {
-  .menu-item-has-children {
-    >a {
-      background-color:lighten( @headline-bg,10%);
-      color: white;
+  &.widget_nav_menu {
+    .menu-item-has-children {
+      >a {
+        background-color:lighten( @headline-bg,10%);
+        color: white;
+      }
+      >a:after {
+        content: none;
+      }
+      .sub-menu {
+        border-radius:0;  
+      }
     }
-    >a:after {
-      content: none;
-    }
-    .sub-menu {
-      border-radius:0;  
-    }
-  }
 
-  .menu-item-has-children:first-child {
-    >a {
-      border-top-right-radius : 5px;
-      border-top-left-radius : 5px;
+    .menu-item-has-children:first-child {
+      >a {
+        border-top-right-radius : 5px;
+        border-top-left-radius : 5px;
+      }
     }
-  }
+    }
 }
 
 
@@ -80,6 +83,8 @@ WP-Bootstrap - Widgets
 .widget-header {
   padding:0 0 0 0;
   @media (max-width: @screen-sm-min) {
+
+    //ヘッダーのメニュー
     .menu {
       margin:0 -15px;
       padding:0;
@@ -90,7 +95,7 @@ WP-Bootstrap - Widgets
       border:none;
       padding: 0 10px;
       margin: 0;
-      border-bottom:1px solid @navbar-default-border;
+      border-bottom:1px solid @gray-lighter;
 
       a {
         padding : 10px;
@@ -100,6 +105,11 @@ WP-Bootstrap - Widgets
         font-weight: bold;
       }
     }
+    /*
+    .menu-item:last-child{
+      border-bottom: none;
+    }
+    */
     .menu-item:after {
       content: "\f105";
       font-family: FontAwesome;
@@ -118,7 +128,8 @@ WP-Bootstrap - Widgets
   @media (min-width: @screen-sm-min) {
     .menu {
       float:left;
-      padding-top:10px;
+			padding: 10px 0 0 0 ;
+			margin: 0;
     }
     .menu-item {
       margin: 0 10px;
@@ -135,8 +146,9 @@ WP-Bootstrap - Widgets
       }
     }
     &.widget_search {
-      float:right;
+      float:left;
       padding-top:15px;
+			margin-bottom: 10px;
     }
   }
 
@@ -170,34 +182,18 @@ WP-Bootstrap - Widgets
   }
 
 
-  .widget-title { 
-    .headline-v2();
-
-  }
 }
 
 
 //フッターウィジェット
 .widget-footer {
   margin-bottom: 20px;
-
   .widget-list();
-  .widget-title {
-    color: @gray-dark;
-    font-size: 14px;
-  }
 }
-
-
 
 //記事下のウィジェット
 .widget-post-bottom {
   margin-top:10px;
-
-  .widget-title {
-    color: @gray-dark;
-    font-size: 14px;
-  }
   .widget-list();
   .widget-menu-list();
 }
@@ -227,7 +223,6 @@ WP-Bootstrap - Widgets
 }
 
 /* change default form padding for search */
-
 .widget_search{
   form{
     padding-left: 0;
@@ -250,39 +245,21 @@ WP-Bootstrap - Widgets
   }
 }
 
-/* calendar widget */
-
-#calendar_wrap{
-  border: 1px solid #ddd;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  padding: 5px;
-}
-
-#wp-calendar{
-  width: 100%;
-}
-
-#wp-calendar caption{
-  font-weight: bold;
-  padding: 8px;
-}
-
-#wp-calendar tr{
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-}
-
-#wp-calendar tr:last-child{
-  border-bottom: none;
-}
-
-#wp-calendar td{
-  text-align: center;
-  padding: 8px 0;
-}
-
-blockquote.pull-left{
-  padding-right: 15px;
+.widget-profile {
+	.navigator { 
+		padding: 0; 
+		margin: 0 0 0 0;
+		float: left;
+		img {
+			max-width: 80px;
+			max-height: 120px;
+			margin: 0 !important;
+			@media (min-width: @screen-sm-min) {
+				max-width: 120px;
+			}
+		}
+	}
+	.profile-sns {
+		margin: 10px 0 0 10px;
+	}
 }

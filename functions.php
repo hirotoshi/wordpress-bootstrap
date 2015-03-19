@@ -1,5 +1,6 @@
 <?php
 
+require_once('wpb-includes/version.php');
 
 //ロケール
 require_once('wpb-includes/locale.php');

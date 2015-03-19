@@ -80,7 +80,7 @@ echo $args['before_title'] . $title . $args['after_title'];
             <?php endwhile; ?>
         </div>
         <div class="nav-more">
-            <a class="btn btn-primary" href="/recents" >
+            <a class="btn btn-default" href="/recents" >
             <?php if ( $title ) :?><?php echo $title ?>を<?php endif ?>もっと見る
             </a>
         </div>
