@@ -1,4 +1,3 @@
-
 <footer class="footer" role="contentinfo">
 
 	<div id="inner-footer" class="clearfix">
@@ -8,27 +7,27 @@
 			<?php endif; ?>
 		</div>
 
-
-		<div class="attribute">
-			<h4>
-				<a href="<?= home_url() ?>">
-					<?php bloginfo('description'); ?>
-				</a>
-			</h4>
-			<p class="copy">
-			<small>
-				<?php the_date('Y');?>
-				&copy;
-				<?php bloginfo('name');?>.
-				All Rights Reserved.
-			</small>
-			</p>
-		</div>
 	</div> <!-- end #inner-footer -->
 
 </footer> <!-- end footer -->
 
 </div> <!-- end #container -->
+
+<div class="attribute copyright">
+	<h4>
+		<a href="<?= home_url() ?>">
+			<?php bloginfo('description'); ?>
+		</a>
+	</h4>
+	<p class="copy">
+	<small>
+		<?php the_date('Y');?>
+		&copy;
+		<?php bloginfo('name');?>.
+		All Rights Reserved.
+	</small>
+	</p>
+</div>
 
 <div id="totop" class="totop">
 	<a id="totop" class="totop btn btn-default" href="#"><i class="fa fa-caret-up"></i>トップへ</a>

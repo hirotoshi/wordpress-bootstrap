@@ -43,18 +43,29 @@
                             <i class="fa fa-bars"></i>
 						</button>
 						<?php endif ?>
-						<a class="navbar-brand" title="<?php echo get_bloginfo('description'); ?>" href="<?php echo home_url(); ?>">
-							<?php if (get_header_image()) :?>
-							<img class="img-responsive"  src="<?php header_image(); ?>" />
-							<?php else : ?>
-							<span class="blog-title"><?php bloginfo('name'); ?></span>
+
+						<?php if (is_home()) : ?>
+						<h1>
 							<?php endif ?>
 
-						</a>
+							<a class="navbar-brand" title="<?php echo get_bloginfo('description'); ?>" href="<?php echo home_url(); ?>">
+								<?php if (get_header_image()) :?>
+								<img class="img-responsive"  src="<?php header_image(); ?>" alt="<?php bloginfo('nam') ?>" />
+								<?php else : ?>
+								<span class="blog-title"><?php bloginfo('name'); ?></span>
+								<?php endif ?>
+							</a>
+
+							<?php if (is_home()) : ?>
+						</h1>
+						<?php endif ?>
+
+
+
 					</div>
 
 					<div class="collapse navbar-collapse navbar-responsive-collapse">
-                        <?php dynamic_sidebar( 'header' ); ?>
+						<?php dynamic_sidebar( 'header' ); ?>
 					</div>
 
 				</div> <!-- end .container -->

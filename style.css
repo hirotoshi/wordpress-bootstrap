@@ -7073,16 +7073,20 @@ body .admin-bar .navbar-fixed-top {
   float: left;
   margin-left: 10px;
 }
-.attribute {
+.copyright {
   text-align: center;
-}
-.attribute h3,
-.attribute h4 {
-  font-size: 12px;
-}
-.attribute h3 a,
-.attribute h4 a {
+  padding: 10px 0;
+  background-color: #ffffff;
   color: #333333;
+  margin-bottom: 10px;
+}
+.copyright a,
+.copyright a:link {
+  color: #333333;
+}
+.copyright h3,
+.copyright h4 {
+  font-size: 12px;
 }
 .copy {
   font-size: 12px;
@@ -7234,10 +7238,15 @@ WP-Bootstrap - Navbar
   -webkit-box-shadow: initial;
   box-shadow: initial;
 }
-.navbar-brand img {
-  margin: -20px -15px -15px -15px;
+.navbar-default h1 {
+  margin: 0;
+  padding: 0;
+}
+.navbar-default .blog-title {
+  color: #ffffff;
 }
 .navbar-brand img {
+  margin: -20px -15px 0 -15px;
   max-width: 300px;
   max-height: 60px;
 }
@@ -7245,6 +7254,12 @@ WP-Bootstrap - Navbar
   padding: 10px 10px;
   height: 60px;
   line-height: 40px;
+}
+.sitedesc {
+  font-size: 11px;
+  margin: 0;
+  padding: 5px 0;
+  position: absolute;
 }
 /*
 
@@ -7999,7 +8014,7 @@ WP-Bootstrap - Widgets
     border: none;
     padding: 0 10px;
     margin: 0;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #e7e7e7;
   }
   .widget-header .menu-item a {
     padding: 10px;
@@ -8382,7 +8397,7 @@ a.tags a:focus {
   }
 }
 .widget-profile .profile-sns {
-  margin: 10px 0 0 10px;
+  margin: 10px 0 0 0;
 }
 .media-list {
   /*

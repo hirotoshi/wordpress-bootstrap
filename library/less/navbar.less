@@ -10,19 +10,25 @@ WP-Bootstrap - Navbar
   border-bottom: @navbar-default-border 2px solid;
   -webkit-box-shadow : initial;
   box-shadow: initial;
+
+	h1 {
+		margin:0;
+		padding:0;
+	}
+
+  .blog-title {
+    color: @navbar-title-color;
+  }
 }
 
 //
-.navbar-default .navbar-collapse {
-}
 
-.navbar-brand img {
-  margin:-20px -15px -15px -15px;
-}
-
-.navbar-brand img {
-  max-width:300px;
-  max-height:@navbar-height;
+.navbar-brand  {
+	img {
+		margin:-20px -15px 0 -15px;
+		max-width:300px;
+		max-height:@navbar-height;
+	}
 }
 .navbar-nav > li.menu-item > a {
   padding : 10px 10px;
@@ -30,3 +36,10 @@ WP-Bootstrap - Navbar
   line-height: @navbar-height - 20px;
 }
 
+
+.sitedesc {
+	font-size:11px;
+	margin: 0;
+	padding: 5px 0;
+	position:absolute;
+}
