@@ -24,6 +24,11 @@
 						<?php endif ?>
 					</span> 
 					</p>
+
+					<?php if ( is_active_sidebar('post-top') ): ?>
+					<?php dynamic_sidebar( 'post-top' ); ?>
+					<?php endif ?>
+
 				</header> <!-- end article header -->
 				<section class="post-content clearfix" itemprop="articleBody">
 					<?php the_content(); ?>

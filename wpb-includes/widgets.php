@@ -13,6 +13,7 @@ require_once('widgets/profile.php');
 function wp_bootstrap_register_sidebars() {
 
 
+
   register_sidebar(array(
   	'id' => 'top',
   	'name' => 'Top Page',
@@ -21,16 +22,6 @@ function wp_bootstrap_register_sidebars() {
   	'after_widget' => '</div>',
   	'before_title' => '<h2 class="widget-title headline">',
   	'after_title' => '</h2>',
-  ));
-
-  register_sidebar(array(
-  	'id' => 'header',
-  	'name' => 'Header',
-  	'description' => 'ヘッダーに表示するウィジェット',
-  	'before_widget' => '<div id="%1$s" class="widget-header widget %2$s">',
-  	'after_widget' => '</div>',
-  	'before_title' => '<h4 class="widget-title">',
-  	'after_title' => '</h4>',
   ));
 
   register_sidebar(array(
@@ -45,12 +36,33 @@ function wp_bootstrap_register_sidebars() {
 
 
   register_sidebar(array(
+  	'id' => 'header',
+  	'name' => 'Header',
+  	'description' => 'ヘッダーに表示するウィジェット',
+  	'before_widget' => '<div id="%1$s" class="widget-header widget %2$s">',
+  	'after_widget' => '</div>',
+  	'before_title' => '<h4 class="widget-title">',
+  	'after_title' => '</h4>',
+  ));
+
+
+  register_sidebar(array(
     'id' => 'footer',
     'name' => 'Footer',
   	'description' => 'フッターに表示するウィジェット',
     'before_widget' => '<div id="%1$s" class="widget-footer widget col-sm-4 %2$s">',
     'after_widget' => '</div>',
     'before_title' => '<h4 class="widget-title headline-footer">',
+    'after_title' => '</h4>',
+  ));
+
+  register_sidebar(array(
+    'id' => 'post-top',
+    'name' => 'Post Top',
+  	'description' => '記事上部に表示するウィジェット',
+    'before_widget' => '<div id="%1$s" class="widget-post-bottom widget  %2$s">',
+    'after_widget' => '</div>',
+    'before_title' => '<h4 class="widget-title headline-sub">',
     'after_title' => '</h4>',
   ));
 

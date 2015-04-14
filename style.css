@@ -6998,12 +6998,12 @@ WP-Bootstrap - Layout
   font-weight: normal;
   padding: 10px 10px 10px 10px;
   margin: 10px -10px 10px -10px;
-  background: #777777;
-  background-image: -webkit-linear-gradient(top, #848484 0%, #777777 100%);
-  background-image: -o-linear-gradient(top, #848484 0%, #777777 100%);
-  background-image: linear-gradient(to bottom, #848484 0%, #777777 100%);
+  background: #aaaaaa;
+  background-image: -webkit-linear-gradient(top, #b7b7b7 0%, #aaaaaa 100%);
+  background-image: -o-linear-gradient(top, #b7b7b7 0%, #aaaaaa 100%);
+  background-image: linear-gradient(to bottom, #b7b7b7 0%, #aaaaaa 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff848484', endColorstr='#ff777777', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffb7b7b7', endColorstr='#ffaaaaaa', GradientType=0);
   border-radius: 4px;
   text-shadow: 1px 2px 2px #000;
   vertical-align: bottom;
@@ -7017,7 +7017,7 @@ WP-Bootstrap - Layout
   font-weight: normal;
   padding: 10px 10px 10px 10px;
   margin: 10px -10px 10px -10px;
-  background: #848484;
+  background: #b7b7b7;
   border-radius: 4px;
   vertical-align: bottom;
 }
@@ -7027,7 +7027,7 @@ WP-Bootstrap - Layout
   font-weight: normal;
   padding: 10px 10px 10px 10px;
   margin: 10px -10px 10px -10px;
-  background: #848484;
+  background: #b7b7b7;
   border-radius: 4px;
   vertical-align: bottom;
 }
@@ -7037,7 +7037,7 @@ WP-Bootstrap - Layout
   font-weight: normal;
   padding: 10px 10px 10px 10px;
   margin: 10px -10px 10px -10px;
-  background: #919191;
+  background: #c3c3c3;
   border-radius: 4px;
   vertical-align: bottom;
 }
@@ -7243,7 +7243,7 @@ WP-Bootstrap - Navbar
   padding: 0;
 }
 .navbar-default .blog-title {
-  color: #ffffff;
+  color: #333333;
 }
 .navbar-brand img {
   margin: -20px -15px 0 -15px;
@@ -8118,7 +8118,7 @@ WP-Bootstrap - Widgets
   color: #555555;
 }
 .widget-top.widget_nav_menu .menu-item-has-children > a {
-  background-color: #919191;
+  background-color: #c3c3c3;
   color: white;
 }
 .widget-top.widget_nav_menu .menu-item-has-children > a:after {
@@ -8185,7 +8185,7 @@ WP-Bootstrap - Widgets
   color: #555555;
 }
 .widget-sidebar.widget_nav_menu .menu-item-has-children > a {
-  background-color: #919191;
+  background-color: #c3c3c3;
   color: white;
 }
 .widget-sidebar.widget_nav_menu .menu-item-has-children > a:after {
@@ -8313,7 +8313,7 @@ WP-Bootstrap - Widgets
   color: #555555;
 }
 .widget-post-bottom.widget_nav_menu .menu-item-has-children > a {
-  background-color: #919191;
+  background-color: #c3c3c3;
   color: white;
 }
 .widget-post-bottom.widget_nav_menu .menu-item-has-children > a:after {

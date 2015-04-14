@@ -13,6 +13,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
   		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
+			<?php if(is_category()): ?>
+			<?php elseif(is_archive()): ?>
+			<meta name="robots" content="noindex,follow">
+			<?php elseif(is_search()): ?>
+			<meta name="robots" content="noindex,follow">
+			<?php elseif(is_tag()): ?>
+			<meta name="robots" content="noindex,follow">
+			<?php elseif(is_paged()): ?>
+			<meta name="robots" content="noindex,follow">
+			<?php endif; ?>
+
 		<!-- wordpress head functions -->
 		<?php wp_head(); ?>
 		<!-- end of wordpress head -->
