@@ -24,21 +24,21 @@ function wpb_custom_popular_html( $populars, $instance ) {
 
     echo '<div class="media-list">';
     foreach( $populars as $popular ) {
-        query_posts('p='.$popular->id);
-        the_post();
-        get_template_part( 'content');
+        if ( $popular->id  ) { 
+            $wp_query = new WP_Query( array( 'p' => $popular->id) );
+            if ( !$wp_query->have_posts() ) { 
+                $wp_query = new WP_Query( array( 'page_id' => $popular->id ) );
+            }
+            if ( $wp_query->have_posts() ) {
+                $wp_query->the_post();
+                get_template_part( 'content');
+            }
+        }
     }
+    echo '</div>';
 
-    /*
-    echo '<div class="nav-more">';
-    echo '<a class="btn btn-primary" href="/populars" >';
-    if ( $title ) {
-        echo $title .'を';    
-    }
-    echo 'もっと見る</a>';
-    echo '</div>';
-     */
-    echo '</div>';
+    //postを元に戻す
+    wp_reset_query();
 }
 add_filter( 'wpp_custom_html', 'wpb_custom_popular_html' ,10, 2);
 

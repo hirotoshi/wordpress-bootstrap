@@ -4,7 +4,7 @@
 		<a href="<?php echo home_url(); ?>" itemprop="url"> <span itemprop="title">ホーム</span> </a>
 	</li>
 	<?php $postcat = get_the_category(); ?>
-	<?php $catid = $postcat[0]->cat_ID; ?>
+	<?php $catid = ($postcat)?$postcat[0]->cat_ID:0; ?>
 	<?php $allcats = array($catid); ?>
 	<?php 
 while(!$catid==0) {

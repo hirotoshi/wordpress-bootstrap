@@ -8439,6 +8439,7 @@ a.tags a:focus {
   color: #555555;
 }
 .embed-card {
+  background: #fff;
   max-width: 500px;
   border: 1px solid #c4c4c4;
   border-radius: 5px;
